@@ -10,7 +10,7 @@ const adminRouter = require('./routes/admin.route');
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3100;
 
 app.use(bodyParser.json()) 
 app.use(bodyParser.urlencoded({ extended: true }))

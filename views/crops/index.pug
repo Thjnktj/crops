@@ -20,7 +20,7 @@ block content
                     .col-md-6.col-lg-3.ftco-animate
                             .product
                                 a.img-prod(href='#')
-                                    img.img-fluid(src='images/lua.jpg', alt='Colorlib Template')
+                                    img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
                                     span.status New
                                     .overlay
                                 .text.py-3.pb-4.px-3.text-center
@@ -44,16 +44,10 @@ block content
                     .block-27
                         ul
                             li
-                                a(href='#') &lt;
-                            li.active
-                                span 1
+                                a(href="#") &lt;
+                            each i in [1,2,3,4,5]
+                                if(i <= 5)
+                                    li.active
+                                        a(href="page="+i)= i
                             li
-                                a(href='#') 2
-                            li
-                                a(href='#') 3
-                            li
-                                a(href='#') 4
-                            li
-                                a(href='#') 5
-                            li
-                                a(href='#') &gt;
+                                a(href="#") &gt;

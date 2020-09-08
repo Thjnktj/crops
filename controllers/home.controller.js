@@ -15,3 +15,9 @@ module.exports.news = function(req, res, next){
         title: 'News Page - Website about the Crops'
     });
 }
+
+module.exports.login = function(req, res, next){
+    res.render('auth/login',{
+        title: 'Login V4'
+    })
+}

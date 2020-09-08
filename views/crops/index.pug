@@ -1,0 +1,59 @@
+extends ../layouts/index
+block content
+    section.ftco-section
+        .container
+            .row.justify-content-center
+                .col-md-10.mb-5.text-center
+                    ul.product-category
+                        li
+                            a.active(href='#') Tất cả
+                        li
+                            a(href='#') Lúa
+                        li
+                            a(href='#') Ngô
+                        li
+                            a(href='#') Khoai
+                        li
+                            a(href='#') Sắn
+            .row
+                each item in seeds
+                    .col-md-6.col-lg-3.ftco-animate
+                            .product
+                                a.img-prod(href='#')
+                                    img.img-fluid(src='images/lua.jpg', alt='Colorlib Template')
+                                    span.status New
+                                    .overlay
+                                .text.py-3.pb-4.px-3.text-center
+                                    h3
+                                        a(href='#')= item.name
+                                    .d-flex
+                                        .pricing
+                                            p.price
+                                                span.price-sale Chi tiết
+                                        .bottom-area.d-flex.px-3
+                                            .m-auto.d-flex
+                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
+                                                    span
+                                                        i.ion-ios-menu
+                                                a.heart.d-flex.justify-content-center.align-items-center(href='#')
+                                                    span
+                                                        i.ion-ios-heart
+      
+            .row.mt-5
+                .col.text-center
+                    .block-27
+                        ul
+                            li
+                                a(href='#') &lt;
+                            li.active
+                                span 1
+                            li
+                                a(href='#') 2
+                            li
+                                a(href='#') 3
+                            li
+                                a(href='#') 4
+                            li
+                                a(href='#') 5
+                            li
+                                a(href='#') &gt;

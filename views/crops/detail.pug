@@ -1,0 +1,72 @@
+extends ../layouts/index
+block content
+    .hero-wrap.hero-bread(style="background-image: url('/images/lua.png');")
+        .container
+            .row.no-gutters.slider-text.align-items-center.justify-content-center
+                .col-md-9.ftco-animate.text-center
+                    p.breadcrumbs
+                        span.mr-2
+                            a(href='index.html') Home
+                        span.mr-2
+                            a(href='index.html') Product
+                        span Product Single
+                    h1.mb-0.bread Product Single
+
+    section.ftco-section
+        .container
+            .row
+                .col-lg-6.mb-5.ftco-animate
+                    a.image-popup(href='/images/lua.png')
+                        img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                .col-lg-6.product-details.pl-md-5.ftco-animate
+                    h3= seed.name
+                    .rating.d-flex
+                        p.text-left.mr-4
+                            a.mr-2(href='#') 5.0
+                            for i in [1,2,3,4,5]
+                                a(href='?start=' + i)
+                                    span.ion-ios-star-outline
+                    h4
+                        span Nguồn gốc
+                    p
+                        p(style="text-align: justify")= seed.origins
+                .col-lg-12.product-details.pl-md-5.ftco-animate
+                    h4
+                        span Những đặc tính chủ yếu
+                    p
+                        p(style="text-align: justify")= seed.biology
+                    h4
+                        span Hướng sử dụng và yêu cầu kỹ thuật
+                    p
+                        p(style="text-align: justify")= seed.techniques
+
+    section.ftco-section
+        .container
+            .row.justify-content-center.mb-3.pb-3
+                .col-md-12.heading-section.text-center.ftco-animate
+                    span
+                        h3.subheading.price Các cây trồng liên quan
+        .container
+            .row
+                .col-md-6.col-lg-3.ftco-animate
+                    .product
+                        a.img-prod(href='#')
+                            img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                            span.status New
+                            .overlay
+                        .text.py-3.pb-4.px-3.text-center
+                            h3
+                                a(href='#') Bell Pepper
+                            .d-flex
+                            .pricing
+                                p.price
+                                    span.price-sale Chi tiết
+                            .bottom-area.d-flex.px-3
+                                .m-auto.d-flex
+                                    a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='#')
+                                        span
+                                            i.ion-ios-menu
+                                    a.heart.d-flex.justify-content-center.align-items-center(href='#')
+                                        span
+                                            i.ion-ios-heart
+

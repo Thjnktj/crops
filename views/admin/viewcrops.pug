@@ -1,0 +1,43 @@
+extends ../layouts/admin
+block content
+
+    main
+        .container-fluid
+            h1.mt-4 Danh sách giống cây trồng
+            ol.breadcrumb.mb-4
+                li.breadcrumb-item
+                    a(href='/admin') Admin
+                li.breadcrumb-item.active List
+            .card.mb-4
+                .card-body
+                    span(style="color: blue") Trang quản lý danh sách các giống cây trồng
+            .card.mb-4
+                .card-header
+                    .row
+                        .col-sm-9.col-md-10
+                            i.fas.fa-table.mr-1
+                            span Bảng giống cây
+                        .col-sm-3.col-md-2
+                            a.btn.btn-primary(href="/admin/create") Thêm giống
+                .card-body
+                    .table-responsive
+                        table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                            thead
+                                tr
+                                    th Tên giống
+                                    th Cây trồng
+                                    th Nguồn gốc
+                                    th Đặc điểm
+                                    th Kĩ thuật canh tác
+                                    th Tác vụ
+                            tbody
+                                each seed in seeds
+                                    tr
+                                        td= seed.name
+                                        td= seed.type
+                                        td= seed.origins
+                                        td= seed.biology
+                                        td= seed.techniques
+                                        td
+                                    
+

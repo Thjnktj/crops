@@ -1,0 +1,13 @@
+extends ../admin/addcrops
+block create
+
+    .container
+        if error
+            each err in error
+                .alert.alert-danger= err ? err : ''
+        h3 Nhập cây trồng thêm mới
+        form(method="POST", onsubmit="return validateForm()")
+            .form-group.d-flex
+                input#check-1.form-control(type="text", name="name", style="width: 40%")
+                label#error-1.lable-error
+            button.btn.btn-primary.ml-1 Create

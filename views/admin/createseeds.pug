@@ -1,0 +1,34 @@
+extends ../admin/addcrops
+block create
+
+    .container
+        h3 Nhập thông tin giống
+        form(method="POST", onsubmit="return validateForm()")
+
+            label Tên giống
+            .form-group.d-flex
+                input#check-1.form-control(type="text", name="name", style="width: 70%")
+                label#error-1.lable-error
+
+            label Phân loại
+            .form-group.d-flex
+                input#check-2.form-control(type="text", name="type", style="width: 70%")
+                label#error-2.lable-error
+
+            label(for="#origins") Nguồn gốc
+            .form-group
+                input#check-3.form-control(type="text", name="origins", style="width: 70%")
+                label#error-3.lable-error
+
+            label(for="#biology") Đặc tính chủ yếu
+            .form-group.d-flex
+                input#check-4.form-control(type="text", name="biology", style="width: 70%")
+                label#error-4.lable-error
+
+            label Hướng dẫn và kỹ thuật canh tác
+            .form-group.d-flex
+                input#check-5.form-control(type="text", name="techniques", style="width: 70%")
+                label#error-5.lable-error
+
+            .form-group
+                button.btn.btn-primary Create

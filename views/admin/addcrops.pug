@@ -1,0 +1,14 @@
+extends ../layouts/admin
+block content
+
+    main
+        .container-fluid
+            h1.mt-4 Thêm giống mới     
+            .row
+                .col-xl-12.col-md-12
+                    a.btn.btn-primary(href="/admin/create/crops") Thêm cây trồng mới
+                    a.btn.btn-primary.ml-3(href="/admin/create/types") Thêm loại cây trồng mới
+                    a.btn.btn-primary.ml-3(href="/admin/create/seeds") Thêm giống cây mới
+            br
+            block create
+                    

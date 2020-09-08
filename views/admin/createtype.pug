@@ -1,0 +1,17 @@
+extends ../admin/addcrops
+block create
+
+    h3 Nhập cây trồng thêm mới
+    
+    form(method="POST", name="myForm", onsubmit="return validateForm()")
+        .form-group
+            label(for="crops") Chọn cây trồng
+            select#crops.form-control(name="crops", style="width: 70%")
+                each item in crops
+                    option
+                        p= item.name
+        .form-group.d-flex
+            input#check-1.form-control(type="text", name="type", style="width: 70%")
+            label#error-1.lable-error
+        .form-group
+            button.btn.btn-primary Create

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{title}
+        link(href='/admin/styles.css', rel='stylesheet')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js')
+    body
+        #layoutError
+            #layoutError_content
+                main
+                    .container
+                        .row.justify-content-center
+                            .col-lg-6
+                                .text-center.mt-4
+                                    img.mb-4.img-error(src='/admin/img/error-404-monochrome.svg')
+                                    p.lead This requested URL was not found on this server.
+                                    a(href='/')
+                                        i.fas.fa-arrow-left.mr-1
+                                        span Go home
+            #layoutError_footer
+                footer.py-4.bg-light.mt-auto
+                    .container-fluid
+                        .d-flex.align-items-center.justify-content-between.small
+                            .text-muted Copyright &copy; Your Website 
+                                script.
+                                    document.write(new Date().getFullYear());
+                            div
+                                a(href='#') Developer
+                                span &middot;
+                                a(href='#') Thịnh K62
+        script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js')
+        script(src='/admin/scripts.js')

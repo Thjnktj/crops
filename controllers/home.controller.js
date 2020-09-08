@@ -18,6 +18,7 @@ module.exports.news = function(req, res, next){
 
 module.exports.login = function(req, res, next){
     res.render('auth/login',{
-        title: 'Login V4'
+        title: 'Login V4',
+        user: user
     })
 }

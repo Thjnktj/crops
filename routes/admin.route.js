@@ -9,6 +9,10 @@ router.get('/', controller.index);
 
 router.get('/views', controller.viewCrops);
 
+router.get('/views/delete=:id', controller.deleteSeed);
+
+router.get('/views/update=:id', controller.updateSeed);
+
 router.get('/news', controller.viewNews);
 
 router.get('/create', controller.create);

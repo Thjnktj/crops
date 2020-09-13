@@ -42,10 +42,10 @@ html(lang="en")
                             .col-md-5.pr-4.d-flex.topper.align-items-center.text-lg-right
                                 span.text
                                     span
-                                        a(href="#", style="color: #fff") Đăng ký
+                                        a(href="/register", style="color: #fff") Đăng ký
                                     span &nbsp;/&nbsp;
                                     span
-                                       a(href="/login", style="color: #fff") Đăng nhập
+                                       a(href="/auth/login", style="color: #fff") Đăng nhập
 
         nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-light
             .container
@@ -63,30 +63,53 @@ html(lang="en")
                         li.nav-item
                             a.nav-link(href='/news') Tin tức
                         li.nav-item
-                            a.nav-link(href='/search') Tìm kiếm nâng cao
-                        li.nav-item
                             a.nav-link(href='#contact') Liên hệ
                         li.nav-item
-                            form.search-form(action='/search/key', method="POST")
+                            form.search-form(action='/search', method="GET")
                                 .form-group
                                     span.icon.ion-ios-search
-                                    input.form-control(type='text', placeholder='Search...', name='key')
+                                    input.form-control(type='text', name='key')
 
 
         block content
 
-        footer#contact.ftco-footer.ftco-section
+        footer#contact.ftco-footer.ftco-section.ftco-no-pb.bg-light
             .container
-                .row
-                    .mouse
-                        a.mouse-icon(href='#')
-                            .mouse-wheel
-                                span.ion-ios-arrow-up
-                .row.mb-5
+                .row.mb-2
                     .col-md
-                        .ftco-footer-widget.mb-4
-                            h2.ftco-heading-2 Vegefoods
-                            p Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+                        .ftco-footer-widget.mb-4(style="text-align: justify")
+                            h2.ftco-heading-2 Cây trồng
+                            p Cây trồng là cây được thuần hoá, chọn lọc để trồng trọt, đưa vào sản xuất nông nghiệp. Cây trồng chiếm một tỉ lệ rất nhỏ trong tổng số các loài cây trên Trái Đất. Cây trồng được thu hoạch hằng năm hay theo vụ mùa, các sản phẩm này được dùng để làm thức ăn, cỏ khô(dùng cho gia súc), và cho nhiều những mục đích kinh tế khác. Phát triển cây trồng cũng là một phần của nông nghiệp.
+
+                    .col-md
+                        .ftco-footer-widget.mb-4.ml-md-5
+                            h2.ftco-heading-2 Menu
+                            ul.list-unstyled
+                                li
+                                    a.py-2.d-block(href='/') Trang chủ
+                                li
+                                    a.py-2.d-block(href='/about') Giới thiệu
+                                li
+                                    a.py-2.d-block(href='/crops') Cây trồng
+                                li
+                                    a.py-2.d-block(href='/news') Tin tức
+                                li
+                                    a.py-2.d-block(href='/search') Tìm kiếm nâng cao
+                    
+                    .col-md
+                        .ftco-footer-widget.mb-4(style="text-align: justify")
+                            h2.ftco-heading-2 Thông tin liên hệ
+                            .block-23.mb-3
+                                ul
+                                    li
+                                        span.icon.icon-map-marker
+                                        span.text Học viện Nông Nghiệp Việt Nam, tt.Trâu Quỳ, Gia Lâm, Hà Nội
+                                    li
+                                        span.icon.icon-phone
+                                        span.text +2 392 3929 210
+                                    li
+                                        span.icon.icon-envelope
+                                        span.text info@yourdomain.com
                             ul.ftco-footer-social.list-unstyled.float-md-left.float-lft.mt-5
                                 li.ftco-animate
                                     a(href='#')
@@ -97,58 +120,20 @@ html(lang="en")
                                 li.ftco-animate
                                     a(href='#')
                                         span.icon-instagram
-                    .col-md
-                        .ftco-footer-widget.mb-4.ml-md-5
-                            h2.ftco-heading-2 Menu
-                            ul.list-unstyled
-                                li
-                                    a.py-2.d-block(href='#') Shop
-                                li
-                                    a.py-2.d-block(href='#') About
-                                li
-                                    a.py-2.d-block(href='#') Journal
-                                li
-                                    a.py-2.d-block(href='#') Contact Us
-                    .col-md-4
-                        .ftco-footer-widget.mb-4
-                            h2.ftco-heading-2 Help
-                            .d-flex
-                                ul.list-unstyled.mr-l-5.pr-l-3.mr-4
-                                    li
-                                        a.py-2.d-block(href='#') Shipping Information
-                                    li
-                                        a.py-2.d-block(href='#') Returns &amp; Exchange
-                                    li
-                                        a.py-2.d-block(href='#') Terms &amp; Conditions
-                                    li
-                                        a.py-2.d-block(href='#') Privacy Policy
-                                ul.list-unstyled
-                                    li
-                                        a.py-2.d-block(href='#') FAQs
-                                    li
-                                        a.py-2.d-block(href='#') Contact
-                    .col-md
-                        .ftco-footer-widget.mb-4
-                            h2.ftco-heading-2 Have a Questions?
-                            .block-23.mb-3
-                            ul
-                                li
-                                    span.icon.icon-map-marker
-                                    span.text 203 Fake St. Mountain View, San Francisco, California, USA
-                                li
-                                    a(href='#')
-                                    span.icon.icon-phone
-                                    span.text +2 392 3929 210
-                                li
-                                    a(href='#')
-                                    span.icon.icon-envelope
-                                    span.text info@yourdomain.com
+
+                    
                 .row
                     .col-md-12.text-center
                         span Copyright &copy;
                             script.
                                 document.write(new Date().getFullYear());
                         span &nbsp;All rights reserved | This template is made by student VNUA
+                .row.mt-5
+                    .col-md-12(style="float: right")
+                        .mouse
+                            a.mouse-icon(href='#')
+                                .mouse-wheel
+                                    span.ion-ios-arrow-up
                     
                     
         script(src='/js/jquery.min.js')

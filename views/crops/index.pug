@@ -44,10 +44,9 @@ block content
                     .block-27
                         ul
                             li
-                                a(href="#") &lt;
-                            each i in [1,2,3,4,5]
-                                if(i <= 5)
-                                    li.active
-                                        a(href="page="+i)= i
+                                a(href="?page="+ page++) &lt;
+                            each i in list                              
+                                li
+                                    a(href="?page="+ i)= i
                             li
-                                a(href="#") &gt;
+                                a(href="?page="+ page--) &gt;

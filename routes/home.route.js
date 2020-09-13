@@ -8,8 +8,10 @@ router.get('/', controller.index);
 
 router.get('/about', controller.about);
 
-router.get('/login', controller.login);
-
 router.get('/news', controller.news);
+
+router.get('/register', controller.resigter);
+
+router.post('/register', controller.postResigter);
 
 module.exports = router;

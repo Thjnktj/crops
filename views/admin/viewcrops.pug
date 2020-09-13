@@ -18,7 +18,7 @@ block content
                             i.fas.fa-table.mr-1
                             span Bảng giống cây
                         .col-sm-3.col-md-2
-                            a.btn.btn-primary(href="/admin/create") Thêm giống
+                            a.btn.btn-primary(href="/admin/create/crops") Thêm giống
                 .card-body
                     .table-responsive
                         table#dataTable.table.table-bordered(width='100%', cellspacing='0')
@@ -39,5 +39,7 @@ block content
                                         td= seed.biology
                                         td= seed.techniques
                                         td
+                                            a.mb-2(href="/admin/views/update="+ seed.id).btn.btn-success Sửa
+                                            a(href="/admin/views/delete="+ seed.id,).btn.btn-danger Xóa
                                     
 

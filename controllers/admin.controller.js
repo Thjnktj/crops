@@ -69,10 +69,30 @@ module.exports.postTypes = function(req, res, next){
 
 module.exports.postSeeds = function(req, res, next){
     req.body.id = shortId.generate();
+    req.body.view = 0;
+    req.body.comment = 0;
     db.get('seeds').push(req.body).write();
     res.redirect('/admin/create/seeds',{
         title: 'Create Crops New',
     });
+}
+
+//This is method update
+module.exports.updateSeed = function(req, res, next){
+    db.get('seeds')
+    .find({id: req.params.id})
+    .assign({name: name})
+    .write();
+
+    res.redirect('/admin/views');
+}
+
+//This is method delete seed by id
+module.exports.deleteSeed = function(req, res, next){
+
+    db.get('seeds').remove({id: req.params.id}).write();
+
+    res.redirect('/admin/views');
 }
 
 //This is add news page

@@ -1,3 +1,36 @@
 extends ../layouts/admin
 block content
-    h2 This is add news page
+    main
+        .container-fluid
+            h1.mt-4 Thêm tin tức
+            ol.breadcrumb.mb-4
+                li.breadcrumb-item
+                    a(href='/admin') Admin
+                li.breadcrumb-item.active News
+            .card.mb-4
+                .card-body
+                    span(style="color: blue") Trang thêm tin tức
+
+            form( method="POST",onsubmit="return validateForm()")
+
+                label Tiêu đề
+                .form-group.d-flex
+                    input#check-1.form-control(type="text", name="name", style="width: 70%")
+                    label#error-1.lable-error
+
+                label Định dạng tin tức
+                .form-group.d-flex
+                    input#editor(type="text",style="width: 70%", name="content")
+                    script(src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js")
+                    script.
+                        ClassicEditor
+                                .create( document.querySelector( '#editor' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                
+                .form-group
+                    button.btn.btn-primary Create

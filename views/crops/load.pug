@@ -1,0 +1,37 @@
+extends ../crops/index
+block load
+    .row
+        each item in seeds
+            .col-md-6.col-lg-4.ftco-animate
+                    .product
+                        a.img-prod(href='/crops/id='+item.id)
+                            img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                            .overlay
+                        .text.py-3.pb-4.px-3.text-center
+                            h3
+                                a(href='#')= item.name
+                            .d-flex
+                                .pricing
+                                    p.price
+                                        span.price-sale Chi tiết
+                                .bottom-area.d-flex.px-3
+                                    .m-auto.d-flex
+                                        a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id, id="")
+                                            span
+                                                i.ion-ios-menu
+                                        a.heart.d-flex.justify-content-center.align-items-center(href='#')
+                                            span
+                                                i.ion-ios-heart
+
+    .row.mt-5
+        .col.text-center
+            .block-27
+                ul
+                    li
+                        a(href="?page="+ page++) &lt;                     
+                    each i in list                              
+                        li(id='page#{i}')
+                            a(href="?page="+ i)= i
+                    li
+                        a(href="?page="+ page--) &gt;
+

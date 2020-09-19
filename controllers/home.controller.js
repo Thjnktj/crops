@@ -1,4 +1,5 @@
 const db = require("../models/db");
+const shortId = require('shortid');
 const md5 = require("md5");
 
 module.exports.index = function(req, res, next){
@@ -7,8 +8,20 @@ module.exports.index = function(req, res, next){
     });
     res.render('home/index',{
         title: 'Home Page - Website about the Crops',
-        rice: search_name
+        rice: search_name.slice(res.locals.begin, res.locals.end),
+        session: req.signedCookies.userId,
+        user: db.get('users').find({id: req.signedCookies.userId}).value()
     });
+}
+
+module.exports.logout = function(req, res, next){
+    if(req.signedCookies.userId){
+        if(req.signedCookies.adminId){
+            res.clearCookie('adminId');
+        }
+        res.clearCookie('userId');
+        res.redirect('/');
+    }
 }
 
 module.exports.about = function(req, res, next){
@@ -31,8 +44,10 @@ module.exports.resigter = function(req, res, next){
 
 module.exports.postResigter = function(req, res, next){
     req.body.id = shortId.generate();
+    var role = db.get('roles').find({name: "users"}).value();
+    req.body.role = role.id;
     req.body.password = md5(req.body.password);
     db.get('users').push(req.body).write();
-    //quay lại trang home
-    res.redirect('/');
+    //quay lại trang đăng kí
+    res.redirect('/register');
 }

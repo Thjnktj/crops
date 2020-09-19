@@ -4,7 +4,14 @@ const db = require('../models/db');
 module.exports = {
     login: function(req, res, next){
         if(!req.signedCookies.userId){
-            res.render('auth/login');
+            if(!req.signedCookies.adminId)
+            {
+                res.render('auth/login');
+            }
+            else{
+                res.clearCookie('adminId');
+                res.render('auth/login');
+            }
         }
         else{
             res.clearCookie('userId');
@@ -16,49 +23,44 @@ module.exports = {
         var username = req.body.user;
         var pass = req.body.pass;
 
-        var date = new Date(Date.now() + 60*15*1000);
-
         var user = db.get('users').find({username: username}).value();
-        
-        if(!process.env.ADMIN){
-            if(!user){
-                res.render('auth/login',{
-                    values: req.body
-                });
-            }
 
-            var hashPass1 = md5(pass);
-
-            if(user.password !== hashPass1){
-                res.render('auth/login',{
-                    values: req.body
-                });
-                return;
-            }
-            
-            res.cookie('userId', user.password,{
-                signed: true,
-                maxAge: date
+        if(!user){
+            res.render('auth/login',{
+                values: req.body
             });
-    
-            res.redirect('/');
-
-            return;
         }
 
-        var hashPass2 = md5(pass);
+        var hashPass1 = md5(pass);
 
-        if(process.env.PASS !== hashPass2){
+        if(user.password !== hashPass1){
             res.render('auth/login',{
                 values: req.body
             });
             return;
         }
 
-        res.cookie('userId', process.env.PASS,{
-            signed: true
-        });
+        res.locals.username = username;
 
-        res.redirect('/admin');
+        //Kiểm tra quyền truy cập và đưa tài khoản vào trang quy định
+        //Quy định thời gian tồn tại cookie là 60ph
+        const time = new Date(Date.now() + 60*60*1000);
+        var role = db.get('roles').find({id: user.role}).value();
+        if(role.name === 'users'){
+            res.cookie('userId', user.id,{
+                signed: true,
+                expires: time,
+                httpOnly: false
+            });
+            res.redirect('/');
+        }
+        else{
+            res.cookie('adminId', user.id,{
+                signed: true,
+                expires: time,
+                httpOnly: true
+            });
+            res.redirect('/admin');
+        }
     }
 }

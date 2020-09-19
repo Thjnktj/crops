@@ -1,4 +1,38 @@
 extends ../layouts/admin
 block content
 
-    h2 This is news page
+    main
+        .container-fluid
+            h1.mt-4 Quản lý danh sách tin tức
+            ol.breadcrumb.mb-4
+                li.breadcrumb-item
+                    a(href='/admin') Admin
+                li.breadcrumb-item.active News
+            .card.mb-4
+                .card-header
+                    .row
+                        .col-sm-9.col-md-10
+                            i.fas.fa-table.mr-1
+                            span Tin tức
+                        .col-sm-3.col-md-2
+                            a.btn.btn-primary(href="/admin/news/add") Thêm tin tức
+                .card-body
+                    .table-responsive
+                        table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                            thead
+                                tr
+                                    th Tiêu đề
+                                    th Nội dung
+                                    th Ngày đăng
+                                    th Tag
+                                    th Tác vụ
+                            tbody
+                                each item in news
+                                    tr
+                                        td= item.name
+                                        td= item.content
+                                        td= item.date
+                                        td
+                                        td
+                                            a(href="/admin/views/update=").btn.btn-success Sửa
+                                            a(href="/admin/news/delete=" + item.id).btn.btn-danger Xóa

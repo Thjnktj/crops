@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{title}
-        link(rel="stylesheet", href="/css/bootstrap.css")
-    body
-        .container
-            h4 Đăng ký
-            form(action='/',method="POST")
+extends ../layouts/index
+block content
+    .container
+        .row
+            form(action="/register", method="POST")
+                .from-group
+                    if(message)
+                        .alert.alert-success= message
                 .form-group
                     label(for="user") Username
                     input#user.form-control(type="text", name='username')
@@ -16,5 +13,4 @@ html(lang="en")
                     label(for="pass") Password
                     input#pass.form-control(type="password", name='password')
                 .form-group
-                    button.btn.btn-primary Đăng kí
-                    a.ml-5(href="/") Quay lại trang chủ
+                    button.btn.btn-primary Đăng ký

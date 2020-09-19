@@ -24,6 +24,8 @@ html(lang="en")
         link(rel='stylesheet', href='/css/icomoon.css')
         link(rel='stylesheet', href='/css/style.css')
 
+        script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+
     body
 
         .py-1.bg-primary
@@ -34,22 +36,31 @@ html(lang="en")
                             .col-md.pr-4.d-flex.topper.align-items-center
                                 .icon.mr-2.d-flex.justify-content-center.align-items-center
                                     span.icon-phone2
-                                span.text + 1235 2355 98
+                                span.text +84 235 2355 98
                             .col-md.pr-4.d-flex.topper.align-items-center
                                 .icon.mr-2.d-flex.justify-content-center.align-items-center
                                     span.icon-paper-plane
                                 span.text youremail@email.com
                             .col-md-5.pr-4.d-flex.topper.align-items-center.text-lg-right
-                                span.text
-                                    span
-                                        a(href="/register", style="color: #fff") Đăng ký
-                                    span &nbsp;/&nbsp;
-                                    span
-                                       a(href="/auth/login", style="color: #fff") Đăng nhập
+                                if(session)
+                                    span.text
+                                        span Chào, 
+                                            span= user.username
+                                        span &nbsp;/&nbsp;
+                                        span
+                                        a(href="/logout", style="color: #fff") Thoát
+                                else
+                                    span.text
+                                        span
+                                            a(href="/register", style="color: #fff") Đăng ký
+                                        span &nbsp;/&nbsp;
+                                        span
+                                        a(href="/auth/login", style="color: #fff") Đăng nhập
 
         nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-light
             .container
-                a.navbar-brand(href='/') Cropshare
+                a.navbar-brand(href='/')
+                    img(src="/images/logo.png", alt="No Images", style='width: 40%')
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#ftco-nav', aria-controls='ftco-nav', aria-expanded='false', aria-label='Toggle navigation')
                     span.oi.oi-menu Menu
                 #ftco-nav.collapse.navbar-collapse
@@ -106,7 +117,7 @@ html(lang="en")
                                         span.text Học viện Nông Nghiệp Việt Nam, tt.Trâu Quỳ, Gia Lâm, Hà Nội
                                     li
                                         span.icon.icon-phone
-                                        span.text +2 392 3929 210
+                                        span.text +84 392 3929 210
                                     li
                                         span.icon.icon-envelope
                                         span.text info@yourdomain.com
@@ -149,6 +160,5 @@ html(lang="en")
         script(src='/js/jquery.animateNumber.min.js')
         script(src='/js/bootstrap-datepicker.js')
         script(src='/js/scrollax.min.js')
-        script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')
-        script(src='/js/google-map.js')
         script(src='/js/main.js')
+        script(src="/js/ajax.js")

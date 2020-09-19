@@ -1,40 +1,28 @@
 const db = require('../models/db');
+const Date = require('../middlewares/date');
+const shortId = require('shortid');
 
 module.exports.index = function(req, res, next){
-    var page = parseInt(req.query.page) || 1;
-
-    var numItem = 8;
-
-    var begin = (page - 1) * numItem;
-    var end = page * numItem;
-
-    var size = db.get('seeds').size().value();
-
-    //tính số page để hiển thị chia trang
-    var n = size/numItem;
-    var list = [];
-
-    for(var i = 0; i < n; i++){
-        list[i] = i + 1;
-    }
-
-    //tăng giảm page khi kích < or >
-    var a;
-
-    if(req.query.page <= n){
-        a = req.query.page;
-    }
-    else{
-        a = req.query.page - 1;
-    }
-
-    res.locals.page = a
-
-    res.render('crops/index',{
+    res.render('crops/load',{
         title: 'Crops Page - Website about the Crops',
-        list: list,
-        seeds: db.get('seeds').value().slice(begin, end)
+        list: res.locals.list,
+        page: res.locals.page || 1,
+        crops: db.get('crops').cloneDeep().value(),
+        types: db.get('types').cloneDeep().value(),
+        seeds: db.get('seeds').cloneDeep().value().slice(res.locals.begin, res.locals.end)
     });
+}
+
+module.exports.loadId = function(req, res, next){
+    var id = req.params.load;
+    res.render('crops/load',{
+        title: 'Crops Page - Website about the Crops',
+        page: res.locals.page || 1,
+        list: res.locals.list,
+        crops: db.get('crops').cloneDeep().value(),
+        types: db.get('types').cloneDeep().value(),
+        seeds: db.get('seeds').cloneDeep().value().slice(res.locals.begin, res.locals.end)
+    })
 }
 
 module.exports.detail = function(req, res, next){
@@ -42,6 +30,23 @@ module.exports.detail = function(req, res, next){
     var seed = db.get('seeds').find({id:id}).value();
     res.render('crops/detail',{
         title: ' Detail Crops - Website about the Crops',
-        seed: seed
+        seed: seed,
+        session: req.signedCookies.userId,
+        comments: db.get('comments').filter({seed: seed.id}).takeRight(5).value(),
+        user: db.get('users').find({id: req.signedCookies.userId}).value()
     });
+}
+
+module.exports.postComments = function(req, res, next){
+    var id = req.params.id;
+    var user = db.get('users').find({id: req.signedCookies.userId}).value();
+
+    req.body.id = shortId.generate();
+    req.body.user = user.username;
+    req.body.seed = id;
+    req.body.date = Date.getDate() + ', ' + Date.getTime();
+    
+    db.get('comments').push(req.body).write();
+
+    res.redirect('/crops/id='+id);
 }

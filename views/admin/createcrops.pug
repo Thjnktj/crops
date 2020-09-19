@@ -5,9 +5,29 @@ block create
         if error
             each err in error
                 .alert.alert-danger= err ? err : ''
-        h3 Nhập cây trồng thêm mới
-        form(method="POST", onsubmit="return validateForm()")
-            .form-group.d-flex
-                input#check-1.form-control(type="text", name="name", style="width: 40%")
-                label#error-1.lable-error
-            button.btn.btn-primary.ml-1 Create
+    .container-fluid.mt-4
+        .card.mb-4
+            .card-header
+                .row
+                    .col-sm-7.col-md-7
+                        i.fas.fa-table.mt-3
+                        span &nbsp;Các cây trồng đã có
+                    .col-sm-5.col-md-5
+                        form(method="POST", onsubmit="return validateForm()")
+                            .form-group.d-flex
+                                input#check-1.form-control(type="text", name="name")
+                                label#error-1.lable-error
+                                button.btn.btn-primary.ml-1 Create
+            .card-body
+                .table-responsive
+                    table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                        thead
+                            tr
+                                th Các giống cây trồng
+                                th Tác vụ
+                        tbody
+                            each item in crops
+                                tr
+                                    td= item.name
+                                    td
+                                        a(href="/admin/create/crops=" + item.id).btn.btn-danger Xóa

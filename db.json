@@ -1,0 +1,515 @@
+{
+  "roles": [
+    {
+      "id": "admin_Lever1",
+      "name": "admin1"
+    },
+    {
+      "id": "admin_Lever2",
+      "name": "admin2"
+    },
+    {
+      "id": "account_user",
+      "name": "users"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "21232f297a57a5a743894a0e4a801fc3",
+      "role": "admin_Lever1",
+      "id": "07IXHQen1"
+    },
+    {
+      "username": "cuncon",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "role": "account_user",
+      "id": "YTABSGefF"
+    },
+    {
+      "username": "thinh0210",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "role": "admin_Lever2",
+      "id": "RVGk_SvmJ"
+    },
+    {
+      "username": "quang_tien",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "id": "xKuuBSAIH",
+      "role": "account_user"
+    }
+  ],
+  "news": [],
+  "comments": [
+    {
+      "contents": "Cho hỏi giống cây trồng này nên chăm sóc thế nào?",
+      "id": "9HoZf0_1a",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 01"
+    },
+    {
+      "contents": "Giống này giá bao nhiêu?",
+      "id": "jipYTHZtQ",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 03"
+    },
+    {
+      "contents": "Bình luận bài viết\r\n",
+      "id": "-RP5B2_gm",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 15"
+    },
+    {
+      "contents": "Giống này có ưu điểm gì nữa không ạ?",
+      "id": "5_sv2zszk",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 15"
+    },
+    {
+      "contents": "Bình luận nhanh",
+      "id": "pCMzdUfSq",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 15"
+    },
+    {
+      "contents": "hahaa\r\n",
+      "id": "kAsHjK7Lw",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 15"
+    },
+    {
+      "contents": "Bình thường",
+      "id": "mIw9ErSlE",
+      "user": "cuncon",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 17"
+    },
+    {
+      "contents": "Bình luận sôi nổi nhỉ\r\n",
+      "id": "9QIcA84Tr",
+      "user": "quang_tien",
+      "seed": "NXWt26MKH",
+      "date": "19/09/2020, 14 : 45"
+    }
+  ],
+  "crops": [
+    {
+      "name": "Lúa thuần ở phía Bắc",
+      "id": "D58ijQ8LB"
+    },
+    {
+      "name": "Lúa thuần ở phía Nam",
+      "id": "CjNP38_6E"
+    },
+    {
+      "name": "Lúa lai",
+      "id": "MXrIw9e-1"
+    },
+    {
+      "name": "Ngô",
+      "id": "Ka-GIhSpv"
+    },
+    {
+      "name": "Khoai",
+      "id": "7IWcwpkAw"
+    },
+    {
+      "name": "Sắn",
+      "id": "lhlLomdv0"
+    },
+    {
+      "name": "Lạc",
+      "id": "miHj3rOCF"
+    },
+    {
+      "name": "Đậu đỗ",
+      "id": "ujgaiNyFt"
+    },
+    {
+      "name": "Rau",
+      "id": "sXfZaFFxQ"
+    },
+    {
+      "name": "Hoa",
+      "id": "gsPAgTnp_"
+    },
+    {
+      "name": "Cây ăn quả",
+      "id": "AmMAAmTke"
+    },
+    {
+      "name": "Cà phê",
+      "id": "g6eedBaIF"
+    },
+    {
+      "name": "Cao su",
+      "id": "esgZDm3tz"
+    },
+    {
+      "name": "Chè",
+      "id": "NfSS43XtB"
+    },
+    {
+      "name": "Ca cao",
+      "id": "H-Ognz22X"
+    },
+    {
+      "name": "Mía",
+      "id": "X1yJJkH2A"
+    },
+    {
+      "name": "Dâu",
+      "id": "D0Xl4aFKR"
+    },
+    {
+      "name": "Điều",
+      "id": "vgU1DnYB_"
+    },
+    {
+      "name": "Bông",
+      "id": "IN9_Q0lw_"
+    },
+    {
+      "name": "Thuốc lá",
+      "id": "51bW0djOk"
+    },
+    {
+      "name": "Cỏ",
+      "id": "T_rmOjXSV"
+    }
+  ],
+  "types": [
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa dài ngày",
+      "id": "KpvL9a4xn"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa trung ngày",
+      "id": "dd4_WKxvq"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa ngắn ngày chọn tạo trong nước",
+      "id": "zcg7oaWcs"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa ngắn ngày nhập nội từ Trung Quốc",
+      "id": "YYPKBbOWY"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa cạn, chịu hạn úng mặn",
+      "id": "ptJWH5sb4"
+    },
+    {
+      "crops": "CjNP38_6E",
+      "type": "Giống lúa cực ngắn ngày",
+      "id": "gLONhN4th"
+    },
+    {
+      "crops": "CjNP38_6E",
+      "type": "Giống lúa ngắn ngày",
+      "id": "89hv9utDC"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa trung và dài ngày",
+      "id": "Ek9xlnoPc"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa nếp và đặc sản",
+      "id": "d_6Wcm4-U"
+    },
+    {
+      "crops": "D58ijQ8LB",
+      "type": "Giống lúa cạn",
+      "id": "VPWr1OLya"
+    },
+    {
+      "crops": "MXrIw9e-1",
+      "type": "Giống lúa lai chọn tạo trong nước",
+      "id": "3SlIWtTiL"
+    },
+    {
+      "crops": "MXrIw9e-1",
+      "type": "Giống lúa lai chọn tạo nhập nội",
+      "id": "6MGukMLY1"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô lai quy ước",
+      "id": "N0YRx_qf-"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô nếp",
+      "id": "u0WcxZ_sA"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô đường",
+      "id": "EDTqKmdwP"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô rau",
+      "id": "ZH_FtKtH2"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô lai không quy ước",
+      "id": "jfW9-ttxR"
+    },
+    {
+      "crops": "Ka-GIhSpv",
+      "type": "Giống ngô thụ phấn tự do",
+      "id": "gw6x9pZ1Y"
+    },
+    {
+      "crops": "7IWcwpkAw",
+      "type": "Giống khoai lang",
+      "id": "YDmRLgWCb"
+    },
+    {
+      "crops": "7IWcwpkAw",
+      "type": "Giống khoai tây",
+      "id": "GKIfj0e80"
+    },
+    {
+      "crops": "7IWcwpkAw",
+      "type": "Giống khoai sọ",
+      "id": "cKsEg-xla"
+    },
+    {
+      "crops": "lhlLomdv0",
+      "type": "Giống sắn (khoai mỳ)",
+      "id": "z1f7-2DRW"
+    },
+    {
+      "crops": "miHj3rOCF",
+      "type": "Giống lạc",
+      "id": "ZJ9GHUZoE"
+    },
+    {
+      "crops": "ujgaiNyFt",
+      "type": "Giống đậu tương",
+      "id": "2Y2RwR5Td"
+    },
+    {
+      "crops": "ujgaiNyFt",
+      "type": "Giống đậu xanh",
+      "id": "2dGYyk1gE"
+    },
+    {
+      "crops": "ujgaiNyFt",
+      "type": "Giống đậu đen",
+      "id": "HqcWhxhNZ"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống cà chua",
+      "id": "amVL3KVhE"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống dưa chuột (dưa leo) ",
+      "id": "mu-EIM2kN"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống bắp cải",
+      "id": "LZ6gJSeft"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống su lơ",
+      "id": "sxdO9OASm"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống su hào",
+      "id": "8g1hOcsqX"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống xà lách",
+      "id": "UIJ1-zJOz"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống bầu, bí, mướp",
+      "id": "Bu6xu48AR"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống mướp đắng (khổ qua)",
+      "id": "JIX2FBpvJ"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống ớt",
+      "id": "4ccTV9StK"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống đậu rau",
+      "id": "gjCfu5sH5"
+    },
+    {
+      "crops": "sXfZaFFxQ",
+      "type": "Giống rau khác",
+      "id": "6GVfhMd4u"
+    },
+    {
+      "crops": "gsPAgTnp_",
+      "type": "Giống hoa",
+      "id": "HU94PZQX7"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống và dòng nhãn",
+      "id": "KWrJz3m3u"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống vải",
+      "id": "w7FOC_Gcb"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống xoài",
+      "id": "SquHNe02l"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống cam, quýt, bưởi",
+      "id": "yf5xShyly"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống chôm chôm",
+      "id": "WD8D4L8E1"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống sầu riêng",
+      "id": "RNgyWZNfB"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống nho",
+      "id": "ltd3dEIyB"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống táo",
+      "id": "66Ztmdnr6"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống dứa",
+      "id": "PHx47idFD"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống chuối",
+      "id": "i7BmgrJEu"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống ổi",
+      "id": "gKhy9zvlz"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống dừa",
+      "id": "NCjXwu7hK"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống mít",
+      "id": "br7-q7BOe"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống đu đủ",
+      "id": "CZ1_qQv5m"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống dưa hấu",
+      "id": "jRX-8jdDA"
+    },
+    {
+      "crops": "AmMAAmTke",
+      "type": "Giống cây ăn quả khác",
+      "id": "zC2Vsk1tq"
+    },
+    {
+      "crops": "g6eedBaIF",
+      "type": "Giống cà phê vối",
+      "id": "gKgqv9p6R"
+    },
+    {
+      "crops": "g6eedBaIF",
+      "type": "Giống cà phê chè",
+      "id": "3D-ZGrsun"
+    },
+    {
+      "crops": "esgZDm3tz",
+      "type": "Giống và dòng cao su",
+      "id": "OWS9T6KPW"
+    },
+    {
+      "crops": "NfSS43XtB",
+      "type": "Giống chè",
+      "id": "5Ygtu5SUB"
+    },
+    {
+      "crops": "H-Ognz22X",
+      "type": "Giống và cây đầu dòng ca cao",
+      "id": "xjOdIAl2s"
+    },
+    {
+      "crops": "X1yJJkH2A",
+      "type": "Giống mía",
+      "id": "Qsczk94dh"
+    },
+    {
+      "crops": "D0Xl4aFKR",
+      "type": "Giống dâu",
+      "id": "CRY1t5LfI"
+    },
+    {
+      "crops": "vgU1DnYB_",
+      "type": "Giống điều",
+      "id": "G5Yec-vpO"
+    },
+    {
+      "crops": "IN9_Q0lw_",
+      "type": "Giống bông",
+      "id": "Y41c1nsIz"
+    },
+    {
+      "crops": "51bW0djOk",
+      "type": "Giống thuốc lá",
+      "id": "T_PE-MI3S"
+    },
+    {
+      "crops": "T_rmOjXSV",
+      "type": "Giống cỏ",
+      "id": "tfXLghJK6"
+    }
+  ],
+  "seeds": []
+}

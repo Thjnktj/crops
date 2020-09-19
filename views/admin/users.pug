@@ -1,3 +1,42 @@
 extends ../layouts/admin
 block content
-    h1 This is user page
+    main
+        .container-fluid
+            h1.mt-4 Quản lý danh sách người dùng
+            ol.breadcrumb.mb-4
+                li.breadcrumb-item
+                    a(href='/admin') Admin
+                li.breadcrumb-item.active User
+            .card.mb-4
+                .card-body
+                    span(style="color: blue") Trang quản lý danh sách các giống cây trồng
+            .card.mb-4
+                .card-header
+                    .row
+                        .col-sm-9.col-md-10
+                            i.fas.fa-table.mr-1
+                            span Người dùng
+                        .col-sm-3.col-md-2
+                            a.btn.btn-primary(href="/admin/create/crops") Quản lý comment
+                .card-body
+                    .table-responsive
+                        table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                            thead
+                                tr
+                                    th Username
+                                    th Họ tên
+                                    th Địa chỉ
+                                    th Số điện thoại
+                                    th Email
+                                    th Tác vụ
+                            tbody
+                                each user in users
+                                    tr
+                                        td= user.username
+                                        td
+                                        td
+                                        td
+                                        td
+                                        td
+                                            a(href="/admin/views/update="+user.id).btn.btn-success Sửa
+                                            a(href="/admin/views/delete="+user.id).btn.btn-danger Xóa

@@ -20,7 +20,7 @@ module.exports = {
     postCreateTypes: function(req, res, next){
         var name = db.get('types').find({type: req.body.type}).value();
 
-        if(!type){
+        if(!name){
             errs = ['Cây trồng đã thêm thành công'];
             res.redirect('/admin/create/types');
         }
@@ -29,8 +29,6 @@ module.exports = {
             res.redirect('/admin/create/types');
             return;
         }
-
-        res.locals.types = types;
         next();
     },
 

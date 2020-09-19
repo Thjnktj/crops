@@ -1,17 +1,34 @@
 extends ../admin/addcrops
 block create
 
-    h3 Nhập cây trồng thêm mới
-    
-    form(method="POST", name="myForm", onsubmit="return validateForm()")
-        .form-group
-            label(for="crops") Chọn cây trồng
-            select#crops.form-control(name="crops", style="width: 70%")
-                each item in crops
-                    option
-                        p= item.name
-        .form-group.d-flex
-            input#check-1.form-control(type="text", name="type", style="width: 70%")
-            label#error-1.lable-error
-        .form-group
-            button.btn.btn-primary Create
+    main.mt-4
+        .container-fluid
+            .card.mb-4
+                .card-header
+                    .row
+                        .col-sm-4.col-md-6
+                            i.fas.fa-table.mt-3
+                            span  Loại cây trồng đã có
+                        .col-sm-8.col-md-6
+                            form(method="POST", name="myForm", onsubmit="return validateForm()")
+                                .form-group.d-flex
+                                    select.form-control.mr-2(name="crops")
+                                        each item in crops
+                                            option
+                                                p= item.name
+                                    input#check-1.form-control(type="text", name="type")
+                                    label#error-1.lable-error.mr-2
+                                    button.btn.btn-primary Create
+                .card-body
+                    .table-responsive
+                        table#dataTable.table.table-bordered(width='100%', cellspacing='0')
+                            thead
+                                tr
+                                    th Các loại cây trồng đã có
+                                    th Tác vụ
+                            tbody
+                                each item in types
+                                    tr
+                                        td= item.type
+                                        td
+                                            a(href="/admin/create/types=" + item.id).btn.btn-danger Xóa

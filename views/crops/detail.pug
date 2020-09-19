@@ -1,16 +1,32 @@
 extends ../layouts/index
 block content
-    .hero-wrap.hero-bread(style="background-image: url('/images/lua.png');")
-        .container
-            .row.no-gutters.slider-text.align-items-center.justify-content-center
-                .col-md-9.ftco-animate.text-center
-                    p.breadcrumbs
-                        span.mr-2
-                            a(href='index.html') Home
-                        span.mr-2
-                            a(href='index.html') Product
-                        span Product Single
-                    h1.mb-0.bread Product Single
+
+    if(!seed.images)
+        .hero-wrap.hero-bread(style="background-image: url('/images/lua.png');")
+            .container
+                .row.no-gutters.slider-text.align-items-center.justify-content-center
+                    .col-md-9.ftco-animate.text-center
+                        p.breadcrumbs
+                            span.mr-2
+                                a(href='/') Trang chủ
+                            span.mr-2
+                                span /
+                            span.mr-2
+                                a(href='/crops') Cây trồng
+                        h1.mb-0.bread= seed.name
+    else
+        .hero-wrap.hero-bread(style="background-image: url('/upload/#{seed.images}');")
+            .container
+                .row.no-gutters.slider-text.align-items-center.justify-content-center
+                    .col-md-9.ftco-animate.text-center
+                        p.breadcrumbs
+                            span.mr-2
+                                a(href='/') Trang chủ
+                            span.mr-2
+                                span /
+                            span.mr-2
+                                a(href='/crops') Cây trồng
+                        h1.mb-0.bread= seed.name
 
     section.ftco-section
         .container
@@ -22,10 +38,17 @@ block content
                     h3= seed.name
                     .rating.d-flex
                         p.text-left.mr-4
-                            a.mr-2(href='#') 5.0
-                            for i in [1,2,3,4,5]
-                                a(href='?start=' + i)
-                                    span.ion-ios-star-outline
+                            span Ngày đăng: 
+                                span= seed.date
+                            p.text-left.ml-4
+                                span(style='color: blue')= seed.view
+                                    span &nbsp;
+                                    span.fa.fa-eye
+                            p.text-left
+                                span.ml-5(style='color: red')= seed.like
+                                    span &nbsp;
+                                    span.fa.fa-heart
+
                     h4
                         span Nguồn gốc
                     p
@@ -40,9 +63,39 @@ block content
                     p
                         p(style="text-align: justify")= seed.techniques
 
+            .row
+                .col-lg-12.bg-light
+                    .pt-2.pl-4
+                        h3.mb-5 Bình luận
+                        each item in comments
+                            ul.comment-list
+                                li.comment.ml-5
+                                    .vcard.bio
+                                        img(src='/images/icon-user.jpg', alt='Image placeholder')
+                                    .comment-body
+                                        h3= item.user
+                                            .meta= item.date
+                                        p= item.contents
+
+                        if(session)
+                            form.p-5(method='POST')
+                                .form-group
+                                    label(for='message') Viết bình luận
+                                    textarea#message.form-control(name='contents', cols='20', rows='3')
+                                    button.btn.mt-3.btn-primary Gửi
+                        else
+                            ul.comment-list
+                                li.comment.ml-5
+                                    span
+                                        span Bạn cần phải 
+                                        a(href="/register") &nbsp;Đăng ký
+                                        span &nbsp;hoặc
+                                        a(href="/auth/login") &nbsp;Đăng nhập
+                                        span &nbsp;để bình luận bài viết
+
     section.ftco-section
         .container
-            .row.justify-content-center.mb-3.pb-3
+            .row.justify-content-center
                 .col-md-12.heading-section.text-center.ftco-animate
                     span
                         h3.subheading.price Các cây trồng liên quan

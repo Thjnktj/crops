@@ -2,51 +2,11 @@ extends ../layouts/index
 block content
     section.ftco-section
         .container
-            .row.justify-content-center
-                .col-md-10.mb-5.text-center
-                    ul.product-category
-                        li
-                            a.active(href='#') Tất cả
-                        li
-                            a(href='#') Lúa
-                        li
-                            a(href='#') Ngô
-                        li
-                            a(href='#') Khoai
-                        li
-                            a(href='#') Sắn
             .row
-                each item in seeds
-                    .col-md-6.col-lg-3.ftco-animate
-                            .product
-                                a.img-prod(href='#')
-                                    img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
-                                    span.status New
-                                    .overlay
-                                .text.py-3.pb-4.px-3.text-center
-                                    h3
-                                        a(href='#')= item.name
-                                    .d-flex
-                                        .pricing
-                                            p.price
-                                                span.price-sale Chi tiết
-                                        .bottom-area.d-flex.px-3
-                                            .m-auto.d-flex
-                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
-                                                    span
-                                                        i.ion-ios-menu
-                                                a.heart.d-flex.justify-content-center.align-items-center(href='#')
-                                                    span
-                                                        i.ion-ios-heart
-      
-            .row.mt-5
-                .col.text-center
-                    .block-27
-                        ul
-                            li
-                                a(href="?page="+ page++) &lt;
-                            each i in list                              
-                                li
-                                    a(href="?page="+ i)= i
-                            li
-                                a(href="?page="+ page--) &gt;
+                .col-lg-3
+                    p.pl-3(style='background: green;color: #fff; height: 35px') Danh sách cây trồng
+                    each item in crops
+                        p.pl-3
+                            a(href="/crops/load="+item.id)= item.name
+                .col-lg-9
+                    block load

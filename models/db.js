@@ -4,6 +4,14 @@ const adapter = new FileSync('db.json');
 const db = low(adapter);
 
 //set default
-db.defaults({users: []}).write();
+db.defaults({
+    roles: [],
+    users: [],
+    news: [],
+    comments: [],
+    crops: [],
+    types: [],
+    seeds: []
+}).write();
 
 module.exports = db

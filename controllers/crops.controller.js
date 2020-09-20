@@ -28,6 +28,7 @@ module.exports.loadId = function(req, res, next){
 module.exports.detail = function(req, res, next){
     var id = req.params.id;
     var seed = db.get('seeds').find({id:id}).value();
+    db.get('seeds').find({ id: id }).assign({view: seed.view + 1}).write();
     res.render('crops/detail',{
         title: ' Detail Crops - Website about the Crops',
         seed: seed,

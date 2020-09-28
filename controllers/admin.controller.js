@@ -1,5 +1,6 @@
 const db = require('../models/db');
 const shortId = require('shortid');
+const { value } = require('../models/db');
 
 module.exports.index = function(req, res, next){
     res.render('admin/index',{
@@ -9,6 +10,24 @@ module.exports.index = function(req, res, next){
         seeds: db.get('seeds').size(),
         users: db.get('users').size(),
     });
+}
+
+module.exports.statusChanges = function(req, res, next){
+    var seed = db.get('seeds').find({id: req.params.id}).value();
+    var status;
+    if(seed.new === true){
+        status = false;
+    }
+    else{
+        status = true;
+    }
+    db.get('seeds')
+        .find({ id: req.params.id })
+        .assign({ 
+                new: status
+            })
+        .write();
+    res.redirect('/admin/views')
 }
 
 //This is view page when looking for watch
@@ -50,9 +69,12 @@ module.exports.createTypes = function(req, res, next){
 }
 
 module.exports.createSeeds = function(req, res, next){
+    var last = db.get('seeds').takeRight(1).value();
+    var typesLast = db.get('types').find({id: last[0].type}).value();
     res.render('admin/createseeds',{
         title: 'Create Crops Page',
-        types: db.get('types').value()
+        types: db.get('types').value(),
+        value: typesLast.type
     });
 }
 
@@ -79,7 +101,6 @@ module.exports.postTypes = function(req, res, next){
 
 module.exports.postSeeds = function(req, res, next){
     req.body.id = shortId.generate();
-
     req.body.view = 0;
     req.body.comment = 0;
     req.body.like = 0;
@@ -100,19 +121,37 @@ module.exports.postSeeds = function(req, res, next){
     req.body.crops = type.crops;
     req.body.type = type.id;
 
-    db.get('seeds').push(req.body).write(); 
+    db.get('seeds').push(req.body).write();
 
     res.redirect('/admin/create/seeds');
 }
 
 //This is method update
-module.exports.updateSeed = function(req, res, next){
-    db.get('seeds')
-    .find({id: req.params.id})
-    .assign({name: name})
-    .write();
+module.exports.update = function(req, res, next){
+    var id = req.params.id;
+    var seeds = db.get('seeds').find({id:id}).value();
+    res.render('admin/uploadseeds',{
+        title: 'Upload seeds',
+        seeds: seeds,
+        value: db.get('types').find({id: seeds.type}).value(),
+        types: db.get('types').value()
+    })
+}
 
-    res.redirect('/admin/views');
+module.exports.updateSeed = function(req, res, next){
+    var type = db.get('types').find({type: req.body.type}).value();
+    db.get('seeds')
+        .find({ id: req.params.id })
+        .assign({ 
+                name: req.body.name,
+                type: type.id,
+                images: req.body.images,
+                origins: req.body.origins,
+                biology: req.body.biology,
+                techniques: req.body.techniques,
+            })
+        .write();
+    res.redirect('/admin/views')
 }
 
 //This is method delete crops, types, seed by id
@@ -131,9 +170,7 @@ module.exports.deleteTypes = function(req, res, next){
 }
 
 module.exports.deleteSeed = function(req, res, next){
-
     db.get('seeds').remove({id: req.params.id}).write();
-
     res.redirect('/admin/views');
 }
 
@@ -146,14 +183,12 @@ module.exports.add = function(req, res, next){
 
 module.exports.postNews = function(req, res,next){
     req.body.id = shortId.generate();
-
     db.get('news').push(req.body).write();
     res.redirect('/admin/news');
 }
 
 module.exports.deleteNews = function(req, res, next){
     db.get('news').remove({id: req.params.id}).write();
-
     res.redirect('/admin/news');
 }
 

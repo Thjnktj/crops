@@ -1,7 +1,7 @@
 extends ../layouts/index
 block content
 
-    if(!seed.images)
+    if(seed.images === '')
         .hero-wrap.hero-bread(style="background-image: url('/images/lua.png');")
             .container
                 .row.no-gutters.slider-text.align-items-center.justify-content-center
@@ -15,7 +15,7 @@ block content
                                 a(href='/crops') Cây trồng
                         h1.mb-0.bread= seed.name
     else
-        .hero-wrap.hero-bread(style="background-image: url('/upload/#{seed.images}');")
+        .hero-wrap.hero-bread(style= style)
             .container
                 .row.no-gutters.slider-text.align-items-center.justify-content-center
                     .col-md-9.ftco-animate.text-center
@@ -31,9 +31,14 @@ block content
     section.ftco-section
         .container
             .row
-                .col-lg-6.mb-5.ftco-animate
-                    a.image-popup(href='/images/lua.png')
-                        img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                if(seed.images === '')
+                    .col-lg-6.mb-5.ftco-animate
+                        a.image-popup(href='/images/lua.png')
+                            img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                else
+                    .col-lg-6.mb-5.ftco-animate
+                        a.image-popup(href='/upload/'+seed.images)
+                            img.img-fluid(src='/upload/'+seed.images, alt='Colorlib Template')
                 .col-lg-6.product-details.pl-md-5.ftco-animate
                     h3= seed.name
                     .rating.d-flex

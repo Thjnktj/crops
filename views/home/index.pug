@@ -9,7 +9,7 @@ block content
                             .col-md-6.order-md-last.align-items-stretch.d-flex
                                 .category-wrap-2.ftco-animate.img.align-self-stretch.d-flex(style='background-image: url(images/category.jpg);')
                                     .text.text-center
-                                        h2 Cropshare
+                                        h2 Crops Dictionary
                                             p Website chia sẻ giống cây trồng
                                             p
                                             a.btn.btn-primary(href='/crops') Tìm hiểu
@@ -36,57 +36,110 @@ block content
         .container
             .row.justify-content-center.mb-2.pb-2
                 .col-md-12.heading-section.text-center.ftco-animate
-                    span.subheading Các giống lúa mới
+                    span.subheading 8 giống lúa mới nhất
         .container
             .row
                 each item in rice
                     .col-md-6.col-lg-3.ftco-animate
-                        .product
-                            a.img-prod(href='#')
-                                img.img-fluid(src='images/lua.jpg', alt='Colorlib Template')
-                                span.status New
-                                .overlay
-                            .text.py-3.pb-4.px-3.text-center
-                                h3
-                                    a(href='#')= item.name
-                                .d-flex
-                                    .pricing
-                                        p.price
-                                        span.price-sale Chi tiết
-                                    .bottom-area.d-flex.px-3
-                                        .m-auto.d-flex
-                                            a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+ item.id)
-                                                span
-                                                    i.ion-ios-menu
-                                            a.heart.d-flex.justify-content-center.align-items-center(href='#')
-                                                span
-                                                    i.ion-ios-heart
-    
+                            .product
+                                if(item.images === '')
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                else
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                .text.py-3.pb-4.px-3.text-center
+                                    h3
+                                        a(href='#')= item.name
+                                    .d-flex
+                                        .pricing
+                                            p.price
+                                                span.price-sale Chi tiết
+                                        .bottom-area.d-flex.px-3
+                                            .m-auto.d-flex
+                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
+                                                    span
+                                                        i.ion-ios-menu
+                                                a.heart.d-flex.justify-content-center.align-items-center(href='/crops/like='+item.id)
+                                                    span
+                                                        i.ion-ios-heart
     section.ftco-section.ftco-no-pb.ftco-no-pt
         .container
             .row.justify-content-center.mb-2.pb-2
                 .col-md-12.heading-section.text-center.ftco-animate
-                    span.subheading Các giống ngô mới
+                    span.subheading 8 giống ngô mới nhất
         .container
             .row
-                .col-md-6.col-lg-3.ftco-animate
-                    .product
-                        a.img-prod(href='#')
-                            img.img-fluid(src='images/lua.jpg', alt='Colorlib Template')
-                            span.status New
-                            .overlay
-                        .text.py-3.pb-4.px-3.text-center
-                            h3
-                                a(href='#') Giống ngô 10
-                            .d-flex
-                                .pricing
-                                    p.price
-                                    span.price-sale Chi tiết
-                                .bottom-area.d-flex.px-3
-                                    .m-auto.d-flex
-                                        a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='#')
-                                            span
-                                                i.ion-ios-menu
-                                        a.heart.d-flex.justify-content-center.align-items-center(href='#')
-                                            span
-                                                i.ion-ios-heart
+                each item in corn
+                    .col-md-6.col-lg-3.ftco-animate
+                            .product
+                                if(item.images === '')
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                else
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                .text.py-3.pb-4.px-3.text-center
+                                    h3
+                                        a(href='#')= item.name
+                                    .d-flex
+                                        .pricing
+                                            p.price
+                                                span.price-sale Chi tiết
+                                        .bottom-area.d-flex.px-3
+                                            .m-auto.d-flex
+                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
+                                                    span
+                                                        i.ion-ios-menu
+                                                a.heart.d-flex.justify-content-center.align-items-center(href='/crops/like='+item.id)
+                                                    span
+                                                        i.ion-ios-heart
+    section.ftco-section.ftco-no-pb.ftco-no-pt
+        .container
+            .row.justify-content-center.mb-2.pb-2
+                .col-md-12.heading-section.text-center.ftco-animate
+                    span.subheading 8 giống khoai mới nhất
+        .container
+            .row
+                each item in potatoes
+                    .col-md-6.col-lg-3.ftco-animate
+                            .product
+                                if(item.images === '')
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                else
+                                    a.img-prod(href='/crops/id='+item.id)
+                                        img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                        if(item.new === true)
+                                            span.status New
+                                        .overlay
+                                .text.py-3.pb-4.px-3.text-center
+                                    h3
+                                        a(href='#')= item.name
+                                    .d-flex
+                                        .pricing
+                                            p.price
+                                                span.price-sale Chi tiết
+                                        .bottom-area.d-flex.px-3
+                                            .m-auto.d-flex
+                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
+                                                    span
+                                                        i.ion-ios-menu
+                                                a.heart.d-flex.justify-content-center.align-items-center(href='/crops/like='+item.id)
+                                                    span
+                                                        i.ion-ios-heart

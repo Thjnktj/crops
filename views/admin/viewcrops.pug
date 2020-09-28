@@ -34,6 +34,7 @@ block content
                                         td= seed.biology
                                         td= seed.techniques
                                         td
+                                            a.mb-2(href="/admin/views/id="+ seed.id).btn.btn-primary= seed.new? 'Mới': 'Cũ'
                                             a.mb-2(href="/admin/views/update="+ seed.id).btn.btn-success Sửa
                                             a(href="/admin/views/delete="+ seed.id,).btn.btn-danger Xóa
                                     

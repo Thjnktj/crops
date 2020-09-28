@@ -66,21 +66,22 @@ html(lang="en")
                 #ftco-nav.collapse.navbar-collapse
                     ul.navbar-nav.ml-auto
                         li.nav-item.active
-                            a.nav-link(href='/') Trang chủ
+                            a.nav-link(href='/') Home
                         li.nav-item
-                            a.nav-link(href='/about') Giới thiệu
+                            a.nav-link(href='/about') About
                         li.nav-item
-                            a.nav-link(href='/crops') Cây trồng
+                            a.nav-link(href='/crops') Crops
                         li.nav-item
-                            a.nav-link(href='/news') Tin tức
+                            a.nav-link(href='/news') News
                         li.nav-item
-                            a.nav-link(href='#contact') Liên hệ
+                            a.nav-link(href='/search') Search
+                        li.nav-item
+                            a.nav-link(href='#contact') Contact
                         li.nav-item
                             form.search-form(action='/search', method="GET")
                                 .form-group
                                     span.icon.ion-ios-search
                                     input.form-control(type='text', name='key')
-
 
         block content
 

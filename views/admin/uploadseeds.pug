@@ -1,0 +1,49 @@
+extends ../layouts/admin
+block content
+
+    .container-fluid.mt-4
+        h1.mt-4 Cập nhật lại giống cây
+        ol.breadcrumb.mb-4
+            li.breadcrumb-item.active 
+                a(href="/") Admin
+            li.breadcrumb-item
+                a(href="/admin/views") Views
+        .card.mb-4
+            .card-header
+                h3 Nhập thông tin sửa đổi giống
+            .card-body
+                form(method="POST",enctype="multipart/form-data" onsubmit="return validateForm()")
+
+                    label Tên giống
+                    .form-group.d-flex
+                        input#check-1.form-control(type="text", name="name", value= seeds.name)
+                        label#error-1.lable-error
+
+                    label(for="types") Chọn cây trồng
+                    .form-group
+                        input#types.form-control(list='datalist', name="type", value= value.type)
+                        datalist#datalist
+                            each item in types
+                                option= item.type
+
+                    label(for="images") Chọn ảnh
+                    .form-group
+                        input#images.input-file(type="file", name='images', value= seeds.images)
+
+                    label(for="#origins") Nguồn gốc
+                    .form-group.d-flex
+                        input#check-3.form-control(type="text", name="origins", value= seeds.origins)
+                        label#error-3.lable-error
+
+                    label(for="#biology") Đặc tính chủ yếu
+                    .form-group.d-flex
+                        input#check-4.form-control(type="text", name="biology", value= seeds.biology)
+                        label#error-4.lable-error
+
+                    label Hướng dẫn và kỹ thuật canh tác
+                    .form-group.d-flex
+                        input#check-5.form-control(type="text", name="techniques", value= seeds.techniques)
+                        label#error-5.lable-error
+
+                    .form-group
+                        button.btn.btn-primary Update

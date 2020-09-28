@@ -2,11 +2,16 @@ extends ../layouts/index
 block content
     section.ftco-section
         .container
-            .row
-                .col-lg-3
-                    p.pl-3(style='background: green;color: #fff; height: 35px') Danh sách cây trồng
-                    each item in crops
-                        p.pl-3
-                            a(href="/crops/load="+item.id)= item.name
-                .col-lg-9
-                    block load
+                .row
+                    .col-lg-3
+                        .product.mb-0.p-3(style='background: green; color: white')
+                            span Danh sách cây trồng
+                            span(style='float: right')= size
+                        each item in crops
+                            .product.mb-0.p-3
+                                a.img-prod(href="/crops/load="+item.id)
+                                    span= item.name
+                                    span(style='float: right')= listItem[i++]
+                            .overlay
+                    .col-lg-9
+                        block load

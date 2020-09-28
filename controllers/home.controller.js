@@ -3,12 +3,11 @@ const shortId = require('shortid');
 const md5 = require("md5");
 
 module.exports.index = function(req, res, next){
-    var search_name = db.get('seeds').value().filter(function(seed){
-        return seed.name.toLowerCase().indexOf('Lúa'.toLowerCase()) !== -1;
-    });
     res.render('home/index',{
         title: 'Home Page - Website about the Crops',
-        rice: search_name.slice(res.locals.begin, res.locals.end),
+        rice: db.get('seeds').cloneDeep().filter({crops: 'D58ijQ8LB'}).sortBy({new: true}).takeRight(8).value(),
+        corn: db.get('seeds').cloneDeep().filter({crops: "Ka-GIhSpv"}).sortBy({new: true}).takeRight(8).value(),
+        potatoes: db.get('seeds').cloneDeep().filter({crops: "7IWcwpkAw"}).sortBy({new: true}).takeRight(8).value(),
         session: req.signedCookies.userId,
         user: db.get('users').find({id: req.signedCookies.userId}).value()
     });

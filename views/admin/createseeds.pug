@@ -15,7 +15,7 @@ block create
 
                     label(for="types") Chọn cây trồng
                     .form-group
-                        input#types.form-control(list='datalist', name="type")
+                        input#types.form-control(list="datalist",name="type", value= value?value:"")
                         datalist#datalist
                             each item in types
                                 option= item.type

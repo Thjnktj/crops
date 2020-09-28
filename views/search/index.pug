@@ -1,47 +1,4 @@
 extends ../layouts/index
 block content
-    section.ftco-section
-        .container
-            .row.justify-content-center
-                .col-md-10.mb-5.text-center
-                    h5 Kết quả tìm kiếm
-            .row
-                each item in seeds
-                    .col-md-6.col-lg-3.ftco-animate
-                            .product
-                                a.img-prod(href='#')
-                                    img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
-                                    span.status New
-                                    .overlay
-                                .text.py-3.pb-4.px-3.text-center
-                                    h3
-                                        a(href='#')= item.name
-                                    .d-flex
-                                        .pricing
-                                            p.price
-                                                span.price-sale Chi tiết
-                                        .bottom-area.d-flex.px-3
-                                            .m-auto.d-flex
-                                                a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
-                                                    span
-                                                        i.ion-ios-menu
-                                                a.heart.d-flex.justify-content-center.align-items-center(href='#')
-                                                    span
-                                                        i.ion-ios-heart
-      
-            .row.mt-5
-                .col.text-center
-                    .block-27
-                        ul
-                            li
-                                a(href="#") &lt;
-                            each i in [1,2,3,4,5]
-                                if(i <= 5)
-                                    li.active
-                                        a(href="page="+i)= i
-                            li
-                                a(href="#") &gt;
 
-            .row
-                each item in seeds
-                    p= item.name + item.type
+    h4 this is search page

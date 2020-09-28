@@ -9,7 +9,9 @@ router.get('/',middleware.pages, controller.index);
 
 router.get('/id=:id', controller.detail);
 
-router.get('/load=:id', middleware.pages, controller.loadId);
+router.get('/load=:load', middleware.pages, controller.loadId);
+
+router.get('/like=:id', controller.like);
 
 router.post('/id=:id', controller.postComments);
 

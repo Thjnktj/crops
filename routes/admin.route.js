@@ -1,6 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+const db = require('../models/db');
+const fs = require('fs');
 
 const controller = require('../controllers/admin.controller');
 const middleware = require('../middlewares/admin.middleware');
@@ -25,13 +27,15 @@ router.get('/', controller.index);
 
 router.get('/views', controller.viewCrops);
 
+router.get('/views/id=:id', controller.statusChanges);
+
 router.get('/create/crops=:id', controller.deleteCrops);
 
 router.get('/create/types=:id', controller.deleteTypes);
 
 router.get('/views/delete=:id', controller.deleteSeed);
 
-router.get('/views/update=:id', controller.updateSeed);
+router.get('/views/update=:id', controller.update);
 
 router.get('/news', controller.viewNews);
 
@@ -49,11 +53,11 @@ router.get('/news/add', controller.add);
 
 router.get('/users', controller.user);
 
-router.post('/create/crops',middleware.postCreateCrops, controller.postCrops);
+router.post('/create/crops', middleware.postCreateCrops, controller.postCrops);
 
-router.post('/create/types',middleware.postCreateTypes, controller.postTypes);
+router.post('/create/types', middleware.postCreateTypes, controller.postTypes);
 
-router.post('/create/seeds',middleware.postCreateSeeds,function(req, res, next){
+router.post('/create/seeds', middleware.postCreateSeeds,function(req, res, next){
     upload(req, res, (err) => {
         if(err){
             res.render('admin/createseeds',{
@@ -71,6 +75,39 @@ router.post('/create/seeds',middleware.postCreateSeeds,function(req, res, next){
         next();
     });
 }, controller.postSeeds);
+
+router.post('/views/update=:id',function(req, res, next){
+    upload(req, res, (err) => {
+        if(err){
+            res.render('admin/createseeds',{
+                mess: err
+            });
+            req.body.images = '';
+        }else{
+            var seed = db.get('seeds').find({id: req.params.id}).value();
+
+            if(req.file){
+                const pathToFile = '../crops/public/upload/' + seed.images;
+                try {
+                    if(seed.images === ''){
+
+                    }
+                    else{
+                        fs.unlinkSync(pathToFile);
+                        console.log("Successfully deleted the file.");
+                    }
+                } catch(err) {
+                    console.log(err);
+                }
+                req.body.images = req.file.filename;
+            }
+            else{
+                req.body.images = '';
+            }
+        }
+        next();
+    });
+}, controller.updateSeed);
 
 router.post('/news/add', controller.postNews);
 

@@ -46,6 +46,7 @@ module.exports = {
         }
 
         res.locals.mess = mess;
+        res.locals.value = req.body.type;
         next();
     }
 }

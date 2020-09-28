@@ -1,20 +1,25 @@
 const db = require("../models/db");
 
 module.exports.index = function(req, res, next){
-    var key = req.query.key;
+    var key = req.params.key;
 
-    //tìm kiếm theo tên
-    var search_name = db.get('seeds').value().filter(function(seed){
-        return seed.name.toLowerCase().indexOf(key.toLowerCase()) !== -1;
-    });
+    //Bắt key sau đó so sánh key với các trường name, crops, types, origins, biology
+    //Sau khi so sánh đưa các dữ liệu bắt được vào một object chung
+    //Dùng vòng lặp duyệt các phần tử trong object
+    //Nếu các phần tử có chung id thì đưa ra
 
-    //tìm kiếm theo nguồn gốc
-    var search_origins = db.get('seeds').value().filter(function(seed){
-        return seed.origins.toLowerCase().indexOf(key.toLowerCase()) !== -1;
-    });
-        
+    // var search = db.get('seeds').value().filter((seeds) => {
+    //     if(seeds.name === key)
+    //         return seeds.origins.toLowerCase().indexOf(key.toLowerCase()) !== -1;
+    // });
+    
     res.render('search/index', {
-        title: 'Search Page - Website about the Crops',
-        seeds: search_origins
+        title: 'Search Page - Website about the Crops'
     });
+}
+
+module.exports.result = function(req, res, next){
+    res.render('search/result',{
+        title: 'Result Search Page - Website about the Crops'
+    })
 }

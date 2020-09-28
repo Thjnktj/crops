@@ -3,19 +3,30 @@ const db = require('../models/db');
 module.exports.pages = function(req, res, next){
     var page = parseInt(req.query.page) || 1;
 
-    var numItem = 12;
+    var numItem = 18;
 
     var begin = (page - 1) * numItem;
     var end = page * numItem;
 
-    var size = db.get('seeds').size().value();
+    var size;
+    if(req.params.load){
+        size = db.get('seeds').filter({crops: req.params.load}).size();
+    }
+    else{
+        size = db.get('seeds').take(126).size().value();
+    }
 
     //tính số page để hiển thị chia trang
     var n = size/numItem;
     var list = [];
 
-    for(var i = 0; i < n; i++){
-        list[i] = i + 1;
+    if(size < numItem){
+        list[0] = 1;
+    }
+    else{
+        for(var i = 0; i < n-1; i++){
+            list[i] = i + 1;
+        }
     }
     //tăng giảm page khi kích '<' or '>'
     var page;
@@ -37,7 +48,7 @@ module.exports.pages = function(req, res, next){
 module.exports.homePages = function(req, res, next){
     var page = parseInt(req.query.page) || 1;
 
-    var numItem = 4;
+    var numItem = 8;
 
     var begin = (page - 1) * numItem;
     var end = page * numItem;

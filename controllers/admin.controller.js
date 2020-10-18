@@ -157,7 +157,8 @@ module.exports.updateSeed = function(req, res, next){
 //This is method delete crops, types, seed by id
 module.exports.deleteCrops= function(req, res, next){
 
-    db.get('crops').remove({id: req.params.id}).write();
+    db.get('crops').remove({ id: req.params.id }).write();
+    db.get('types').remove({ crops: req.params.id }).write();
 
     res.redirect('/admin/create/crops');
 }
@@ -177,12 +178,38 @@ module.exports.deleteSeed = function(req, res, next){
 //This is add news page
 module.exports.add = function(req, res, next){
     res.render('admin/addnews',{
-        title: 'Add News Page'
+        title: 'Add News Page',
+        types: db.get('typeNews').value()
     });
+}
+
+module.exports.addTypeNews = function(req, res, next){
+    req.body.id = shortId.generate();
+    db.get('typeNews').push(req.body).write();
+    res.redirect('/admin/news');
 }
 
 module.exports.postNews = function(req, res,next){
     req.body.id = shortId.generate();
+
+    var poster = db.get('users').find({id: req.signedCookies.adminId}).value();
+    var types = db.get('typeNews').find({ name: req.body.types }).value();
+
+    var now = new Date();
+
+    function checkTime(i){
+        if(i<10)
+            i = "0" + i;
+        return i;
+    }
+
+    var date = checkTime(now.getDate() ) + '/' + checkTime(now.getMonth() + 1) + '/' + now.getFullYear();
+    var time = checkTime(now.getHours()) + ':' + checkTime(now.getMinutes());
+
+    req.body.status = false;
+    req.body.types = types.id;
+    req.body.poster = poster.username;
+    req.body.date = date + ', ' + time;
     db.get('news').push(req.body).write();
     res.redirect('/admin/news');
 }

@@ -11,30 +11,44 @@ block content
             .card.mb-4
                 .card-header
                     .row
-                        .col-sm-9.col-md-10
+                        .col-sm-6.col-md-6
                             i.fas.fa-table.mr-1
                             span Tin tức
-                        .col-sm-3.col-md-2
-                            a.btn.btn-primary(href="/admin/news/add") Thêm tin tức
+                        .col-sm-6.col-md-6
+                            .row
+                                .col-sm-8.col-md-8
+                                    form(method="POST", onsubmit="return validateForm()")
+                                        .form-group.d-flex
+                                            input#check-1.form-control(type="text", name="name", placeholder='Thêm loại tin tức mới(nếu có)')
+                                            label#error-1.lable-error
+                                            button.btn.btn-primary.ml-2 Thêm
+                                .col-sm-4.col-md-4
+                                    a.btn.btn-primary(href="/admin/news/add") Thêm tin tức
+                            
                 .card-body
                     .table-responsive
                         table#dataTable.table.table-bordered(width='100%', cellspacing='0')
                             thead
                                 tr
                                     th Tiêu đề
-                                    th Nội dung
+                                    th Miêu tả
                                     th Ngày đăng
                                     th Tag
+                                    th Trạng thái
                                     th Tác vụ
                             tbody
                                 each item in news
                                     tr
                                         td= item.name
-                                        td= item.content
+                                        td= item.description
                                         td= item.date
+                                        td= item.tag
                                         td
+                                            if(item.status === true)
+                                                a.btn.btn-primary(href="#") Duyệt
+                                            else
+                                                a.btn.btn-primary(href="#") Chờ
                                         td
-                                            a(href="#") Trạng thái 
                                             a(href="/admin/views/update=").btn.btn-success Sửa
                                             a(href="/admin/news/delete=" + item.id).btn.btn-danger Xóa
                                                 

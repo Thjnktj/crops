@@ -386,8 +386,8 @@ mark,
     content: "\2014\00A0"; }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto; }
+  max-width: 253px;
+  height: 165px;}
 
 .img-thumbnail {
   padding: 0.25rem;
@@ -2535,6 +2535,22 @@ input[type="button"].btn-block {
 
 .dropdown-toggle:empty::after {
   margin-left: 0; }
+
+.product{
+  display: none;
+}
+
+.product .show{
+  display: block;
+}
+
+.dropdown-show{
+  display: none;
+}
+
+.dropdown-show .show{
+  display: block;
+}
 
 .dropdown-menu {
   position: absolute;
@@ -8067,9 +8083,7 @@ h1, h2, h3, h4, h5,
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
     font-size: 11px;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    padding-left: 20px;
+    padding-top: 1rem;
     padding-right: 20px;
     font-weight: 400;
     color: #000000;
@@ -8077,7 +8091,7 @@ h1, h2, h3, h4, h5,
     letter-spacing: 2px;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #000000; }
+      color: var(--green); }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -8086,7 +8100,7 @@ h1, h2, h3, h4, h5,
         padding-bottom: .9rem;
         color: rgba(255, 255, 255, 0.7); }
         .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-          color: #fff; } }
+          color: var(--green); } }
   .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu {
     border: none;
     background: #fff;
@@ -8132,7 +8146,7 @@ h1, h2, h3, h4, h5,
         color: #fff;
         background: #82ae46; } }
   .ftco-navbar-light .navbar-nav > .nav-item.active > a {
-    color: #000000; }
+    color: green; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item.active > a {
         color: #fff; } }
@@ -8733,7 +8747,8 @@ h1, h2, h3, h4, h5,
   .product .text {
     background: #fff;
     position: relative;
-    width: 100%; }
+    width: 253px;
+    height: 110px; }
     .product .text h3 {
       font-size: 14px;
       margin-bottom: 5px;
@@ -9186,7 +9201,7 @@ textarea.form-control {
   font-size: 24px; }
 
 .ftco-section {
-  padding: 6em 0;
+  padding: 2em 0;
   position: relative; }
 
 .ftco-no-pt {

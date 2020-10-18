@@ -30,8 +30,20 @@ module.exports.about = function(req, res, next){
 }
 
 module.exports.news = function(req, res, next){
-    res.render('home/news',{
-        title: 'News Page - Website about the Crops'
+    res.render('news/list',{
+        title: 'News Page - Website about the Crops',
+        news: db.get('news').takeRight(5).value(),
+        types: db.get('typeNews').value()
+    });
+}
+
+module.exports.loadNews = function (req, res, next) {
+    var id = req.params.id;
+    res.render('news/detail',{
+        title: 'Detail news pages',
+        news: db.get('news').takeRight(5).value(),
+        load: db.get('news').find({id: id}).value(),
+        types: db.get('typeNews').value()
     });
 }
 

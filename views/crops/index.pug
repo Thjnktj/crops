@@ -3,15 +3,19 @@ block content
     section.ftco-section
         .container
                 .row
-                    .col-lg-3
+                    .col-lg-3.mb-3
                         .product.mb-0.p-3(style='background: green; color: white')
                             span Danh sách cây trồng
                             span(style='float: right')= size
-                        each item in crops
-                            .product.mb-0.p-3
-                                a.img-prod(href="/crops/load="+item.id)
-                                    span= item.name
-                                    span(style='float: right')= listItem[i++]
-                            .overlay
+                        each item in listSize
+                            .product.mb-0
+                                a#dropdown04.nav-link(href="/crops/load="+item.id, data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                                    span= crops[item].name
+                                    span(style='float: right')= listItem[item]
+                                each types in listTypes[item]
+                                    .dropdown-show(aria-labelledby='dropdown04')
+                                        .product.mb-0
+                                            a.nav-link(href="/crops/load="+types.id, style='color: blue')= types.type
+                                                span(style='float: right')= listNum[i++]
                     .col-lg-9
                         block load

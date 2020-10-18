@@ -8,6 +8,7 @@ db.defaults({
     roles: [],
     users: [],
     news: [],
+    typeNews: [],
     comments: [],
     crops: [],
     types: [],

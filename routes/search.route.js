@@ -6,6 +6,4 @@ const router = express.Router();
 
 router.get('/', controller.index);
 
-router.get('/:key', controller.index);
-
 module.exports = router;

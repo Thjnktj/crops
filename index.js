@@ -5,6 +5,7 @@ const createError = require('http-errors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const homeRouter = require('./routes/home.route');
 const cropsRouter = require('./routes/crops.route');
@@ -20,6 +21,7 @@ const port = process.env.PORT || 3200;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SESSION_SCRET));
+app.use(cors());
 
 app.set('view engine','pug');
 app.set('views', './views');

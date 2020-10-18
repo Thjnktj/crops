@@ -1,32 +1,70 @@
-$(document).ready(function(){
-    //Bắt sự kiện submit của thẻ có id = id
-    // $('#view').on('click', function(e){
-    //     //Khai báo và gán giá trị thẻ id
-    //     var view = $('#view').val();
+(function ($) {
+  var origin = window.location.origin;
+  var href = window.location.href;
+  $.get(origin, function () {
+    var listClass = ['about', 'crops', 'news']
+    for (var i = 0; i < listClass.length; i++) {
+      if (href == origin + '/') {
+        document.getElementById('home').className = 'nav-item active';
+      }
+      else if (href.split('/')[3] == listClass[i]) {
+        document.getElementById(listClass[i]).className = 'nav-item active';
+      }
+    }
+  })
 
-    //     //Ngăn chặn hành động mặc định của button
-    //     e.preventDefault();
-    //     if(view){
-    //         $.ajax({
-    //             url: '/crops/id=saqsK2bCL', //gửi req đến server
-    //             type: 'POST', // phương thức
-    //             dataType: 'JSON', // dạng dữ liệu 
-    //             data: {seeds: {view: view}} // data gửi  đi 
-    //         })
-    //         .done(function(data){ //ajax nhận được data từ server
-    //             $('.view_seeds').append(data.view); // chèn thêm data
+  $.get(href, function () {
+    var search = href.split('/');
+    if (search.length > 2 && search[3].split('crops').length > 1) {
+      var str = search[search.length - 1].split('?page=');
+      var page = '?page=' + str[1];
+      if(str.length > 1)
+        document.getElementById(page).className = 'active';
+      else
+        document.getElementById('?page=1').className = 'active';
+    }
+  })
 
-    //             // lấy giá trị text của thẻ span có class = users-size,  
-    //             //chuyển về dạng int rồi cộng thêm 1, sau đó gán lại vào giá trị text của chính nó
-    //             $('#count_view').text((parseInt($('#count_view').text()) + 1));  
-    //         })
-    //         .fail(function(){
-    //             alert('Không thể thêm lượt like')
-    //         })
-    //     }
-    //     else{
-    //         alert('Thêm không thành công');
-    //     }
-    //     return false;
-    // })
+})(jQuery);
+
+$(document).ready(function () {
+  $('.autoplay').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  });
+
+  $('.responsive').slick({
+    dots: true,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
 })

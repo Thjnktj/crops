@@ -7,30 +7,38 @@ block content
                 li.breadcrumb-item
                     a(href='/admin') Admin
                 li.breadcrumb-item.active News
-            .card.mb-4
-                .card-body
-                    span(style="color: blue") Trang thêm tin tức
 
-            form( method="POST",onsubmit="return validateForm()")
+            form(method="POST",enctype="multipart/form-data", onsubmit="return validateForm()")
+
+                label Loại tin tức
+                .form-group.d-flex
+                    select.form-control(name="types")
+                        each item in types
+                            option
+                                p= item.name
 
                 label Tiêu đề
                 .form-group.d-flex
-                    input#check-1.form-control(type="text", name="name", style="width: 70%")
-                    label#error-1.lable-error
+                    input#check-2.form-control(type="text", name="name")
+                    label#error-2.lable-error
 
-                label Định dạng tin tức
+                label Mô tả
                 .form-group.d-flex
-                    input#editor(type="text",style="width: 70%", name="content")
-                    script(src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js")
-                    script.
-                        ClassicEditor
-                                .create( document.querySelector( '#editor' ) )
-                                .then( editor => {
-                                        console.log( editor );
-                                } )
-                                .catch( error => {
-                                        console.error( error );
-                                } );
+                    input#check-3.form-control(type="text", name="description")
+                    label#error-3.lable-error
+
+                label(for="images") Chọn ảnh
+                .form-group.d-flex
+                    input#images.input-file(type="file", name='images')
+
+                label Nội dung
+                .form-group.d-flex            
+                    textarea#editor.form-control(name="content", cols="30", rows="10") Soạn thảo nội dung vào đây
+                   
+                label Tag
+                .form-group.d-flex
+                    input#check-4.form-control(type="text", name="tag")
+                    label#error-4.lable-error
                 
                 .form-group
                     button.btn.btn-primary Create

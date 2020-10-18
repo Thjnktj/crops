@@ -10,7 +10,7 @@ module.exports.pages = function(req, res, next){
 
     var size;
     if(req.params.load){
-        size = db.get('seeds').filter({crops: req.params.load}).size();
+        size = db.get('seeds').filter({type: req.params.load}).size();
     }
     else{
         size = db.get('seeds').take(126).size().value();
@@ -24,7 +24,7 @@ module.exports.pages = function(req, res, next){
         list[0] = 1;
     }
     else{
-        for(var i = 0; i < n-1; i++){
+        for(var i = 0; i < n; i++){
             list[i] = i + 1;
         }
     }

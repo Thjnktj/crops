@@ -22,9 +22,11 @@ html(lang="en")
         link(rel='stylesheet', href='/css/jquery.timepicker.css')
         link(rel='stylesheet', href='/css/flaticon.css')
         link(rel='stylesheet', href='/css/icomoon.css')
+        link(rel="stylesheet", type="text/css", href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")
+        link(rel="stylesheet", type="text/css", href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css")
         link(rel='stylesheet', href='/css/style.css')
 
-        script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
 
     body
 
@@ -60,23 +62,21 @@ html(lang="en")
         nav#ftco-navbar.navbar.navbar-expand-lg.navbar-dark.ftco_navbar.bg-dark.ftco-navbar-light
             .container
                 a.navbar-brand(href='/')
-                    img(src="/images/logo.png", alt="No Images", style='width: 40%')
+                    img(src="/images/logo.png", alt="No Images")
                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#ftco-nav', aria-controls='ftco-nav', aria-expanded='false', aria-label='Toggle navigation')
-                    span.oi.oi-menu Menu
+                    span.oi.oi-menu &nbsp;Menu
                 #ftco-nav.collapse.navbar-collapse
                     ul.navbar-nav.ml-auto
-                        li.nav-item.active
-                            a.nav-link(href='/') Home
-                        li.nav-item
-                            a.nav-link(href='/about') About
-                        li.nav-item
-                            a.nav-link(href='/crops') Crops
-                        li.nav-item
-                            a.nav-link(href='/news') News
-                        li.nav-item
-                            a.nav-link(href='/search') Search
-                        li.nav-item
-                            a.nav-link(href='#contact') Contact
+                        li#home.nav-item
+                            a.nav-link(href='/') Trang chủ
+                        li#about.nav-item
+                            a.nav-link(href='/about') Giới thiệu
+                        li#crops.nav-item
+                            a.nav-link(href='/crops') Cây trồng
+                        li#news.nav-item
+                            a.nav-link(href='/news') Tin tức
+                        li#contact.nav-item
+                            a.nav-link(href='#contact') Liên hệ
                         li.nav-item
                             form.search-form(action='/search', method="GET")
                                 .form-group
@@ -161,5 +161,6 @@ html(lang="en")
         script(src='/js/jquery.animateNumber.min.js')
         script(src='/js/bootstrap-datepicker.js')
         script(src='/js/scrollax.min.js')
+        script(type="text/javascript", src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
         script(src='/js/main.js')
         script(src="/js/ajax.js")

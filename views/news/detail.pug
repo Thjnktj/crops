@@ -1,0 +1,13 @@
+extends ../news/index
+block shows
+    span Tin tức, Ngày: 
+        span= load.date
+        span.ml-3
+            i.fa.fa-user
+                span.ml-1=load.poster
+    h2= load.name
+    h4
+        i= load.description
+    img(src="/upload/"+ load.images, alt="No Images", style='margin-left: 20%')
+    div#detail(style="text-align: justify;")= load.content
+    b= load.tag

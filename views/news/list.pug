@@ -1,0 +1,20 @@
+extends ../news/index
+block shows
+    .rows
+        each item in news
+            .col-md-12.d-flex.ftco-animate(style="text-align: justify; max-height: 200px")
+                .blog-entry.align-self-stretch.d-md-flex
+                    a.block-20(href='/news/id='+item.id)
+                        img(src="/upload/"+item.images, alt="No Images", style='max-width: 100%;max-height: 200px')
+                    .text.d-block.pl-md-4(style='text-align: justify')
+                        span.mr-2 Ngày:&nbsp;
+                            span= item.date
+                        span.mr-2= item.poster
+                        h2.heading= item.name
+                        p= item.description
+                        p
+                            a.btn.btn-primary.py-2.px-3(href='/news/id='+item.id, style='font-size: 12px') Chi tiết
+                                span.fa.fa-arrow-right.ml-2(style='font-size: 10px')
+            hr
+
+                        

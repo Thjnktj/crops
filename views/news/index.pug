@@ -1,0 +1,45 @@
+extends ../layouts/index 
+block content
+    .container.mt-3
+        .row
+            .col-lg-8.ftco-animate.mt-4
+                block shows
+            .col-lg-4.sidebar.ftco-animate
+                .sidebar-box.ftco-animate
+                    h3.heading Danh sách tin tức
+                    ul.categories
+                        each item in types
+                            li
+                                a(href='#')= item.name
+                                    span (0)
+                .sidebar-box.ftco-animate
+                    h3.heading Tin tức mới nhất
+                    each items in news
+                        .block-21.mb-4.d-flex
+                            a.blog-img.mr-4
+                                img(src="/upload/"+ items.images, alt="No images", style='width: 100%')
+                            .text
+                                h3.heading-1
+                                    a(href='/news/id='+items.id)= items.name
+                                .meta
+                                    div
+                                        a(href='#')
+                                            span.icon-calendar.mr-2 
+                                                span= items.date
+                                    div
+                                        a(href='#')
+                                            span.icon-person.mr-2 
+                                                span= items.poster
+                .sidebar-box.ftco-animate
+                    h3.heading Tag
+                    .tagcloud
+                        a.tag-cloud-link(href='#') Lúa 
+                        a.tag-cloud-link(href='#') Ngô
+                        a.tag-cloud-link(href='#') Khoai
+                        a.tag-cloud-link(href='#') Sắn
+                        a.tag-cloud-link(href='#') Cà rốt
+                        a.tag-cloud-link(href='#') Cam
+                        a.tag-cloud-link(href='#') Đậu đỗ
+                        a.tag-cloud-link(href='#') Cà tím
+
+                        

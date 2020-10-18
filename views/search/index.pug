@@ -1,4 +1,43 @@
 extends ../layouts/index
 block content
 
-    h4 this is search page
+    section.ftco-section
+        .container
+            .row
+                .col-md-10.mb-5.text-center
+                    if(!size)
+                        h4 Không tìm kiếm thấy: #{key}
+                    else
+                        h4 Tìm thấy #{size} kết quả với tìm kiếm: #{key}
+            if(!size)
+                .row
+                    .col-md-10.mb-5.text-center
+                        h4 Gợi ý tìm kiếm:
+                        p - key tìm kiếm là chữ thường
+                        p - Với các giống nếu biết tên thì gõ trực tiếp vào ô
+                        p - Tìm kiếm theo tên người nghiên cứu thêm phong hàm + '.' trước tên như PGS.TS. + họ và tên
+                        p - Không tìm kiếm theo phân loại giống như giống lúa dài ngày, hoặc theo tên cây trồng như lúa, ngô,...
+                        p - Tìm kiếm theo tên viện nghiên cứu, ...
+            else
+                .row
+                    each item in seeds
+                        .col-md-6.col-lg-3.ftco-animate
+                                .product
+                                    a.img-prod(href='#')
+                                        img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                                        .overlay
+                                    .text.py-3.pb-4.px-3.text-center
+                                        h3
+                                            a(href='#')= item.name
+                                        .d-flex
+                                            .pricing
+                                                p.price
+                                                    span.price-sale Chi tiết
+                                            .bottom-area.d-flex.px-3
+                                                .m-auto.d-flex
+                                                    a.add-to-cart.d-flex.justify-content-center.align-items-center.text-center(href='/crops/id='+item.id)
+                                                        span
+                                                            i.ion-ios-menu
+                                                    a.heart.d-flex.justify-content-center.align-items-center(href='#')
+                                                        span
+                                                            i.ion-ios-heart

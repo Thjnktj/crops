@@ -14,6 +14,8 @@ router.get('/about', controller.about);
 
 router.get('/news', controller.news);
 
+router.get('/news/id=:id', controller.loadNews);
+
 router.get('/register', controller.resigter);
 
 router.post('/register',middleware.authRegister, controller.postResigter);

@@ -3,6 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const db = require('../models/db');
 const fs = require('fs');
+const axios = require('axios');
 
 const controller = require('../controllers/admin.controller');
 const middleware = require('../middlewares/admin.middleware');
@@ -20,6 +21,31 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 }).single('images');
+
+//This function will be responsible for sending to ckeditor
+async function sendRequest(method, url, body){
+    const CSTimestamp = Date.now();
+    const payload = {
+        method,
+        url,
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CS-Signature': generateSignature( apiSecret, method, url, CSTimestamp, body ),
+            'X-CS-Timestamp': CSTimestamp
+        }
+    };
+    if(method.toUpperCase() !== 'GET'){
+        payload.data = body;
+    }
+    try{
+        const {status, data } = await axios(payload);
+        return {status, data};
+    }catch({response}){
+        const {status, data } = response;
+        return {status, data };
+    }
+}
 
 const router = express.Router();
 
@@ -66,7 +92,7 @@ router.post('/create/seeds', middleware.postCreateSeeds,function(req, res, next)
             req.body.images = '';
         }else{
             if(req.file){
-                req.body.images = req.body.images = req.file.filename;
+                req.body.images = req.file.filename;
             }
             else{
                 req.body.images = '';
@@ -109,6 +135,25 @@ router.post('/views/update=:id',function(req, res, next){
     });
 }, controller.updateSeed);
 
-router.post('/news/add', controller.postNews);
+router.post('/news', controller.addTypeNews);
+
+router.post('/news/add',function(req, res, next){
+    upload(req, res, (err) => {
+        if(err){
+            res.render('admin/createseeds',{
+                mess: err
+            });
+            req.body.images = '';
+        }else{
+            if(req.file){
+                req.body.images = req.file.filename;
+            }
+            else{
+                req.body.images = '';
+            }
+        }
+        next();
+    });
+}, controller.postNews);
 
 module.exports = router;

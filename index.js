@@ -16,7 +16,7 @@ const authRouter = require('./routes/auth.route');
 const middleware = require('./middlewares/auth.middleware');
 
 const app = express();
-const port = process.env.PORT || 3200;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,7 +34,6 @@ app.use('/search', searchRouter);
 app.use('/admin',middleware.authLogin, adminRouter);
 app.use('/auth', authRouter);
 
-/*
 app.use((req, res, next) => {
     next(createError(404));
 });
@@ -48,8 +47,7 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-*/
 
-app.listen(port,() => {
-    console.log(`This website running on port ${port}`);
+app.listen(PORT,() => {
+    console.log(`This website running on port ${PORT}`);
 })

@@ -24,7 +24,7 @@
         document.getElementById('?page=1').className = 'active';
     }
   })
-
+  
 })(jQuery);
 
 $(document).ready(function () {

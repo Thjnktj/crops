@@ -3,7 +3,6 @@ const multer = require('multer');
 const path = require('path');
 const db = require('../models/db');
 const fs = require('fs');
-const axios = require('axios');
 
 const controller = require('../controllers/admin.controller');
 const middleware = require('../middlewares/admin.middleware');
@@ -21,31 +20,6 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 }).single('images');
-
-//This function will be responsible for sending to ckeditor
-async function sendRequest(method, url, body){
-    const CSTimestamp = Date.now();
-    const payload = {
-        method,
-        url,
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CS-Signature': generateSignature( apiSecret, method, url, CSTimestamp, body ),
-            'X-CS-Timestamp': CSTimestamp
-        }
-    };
-    if(method.toUpperCase() !== 'GET'){
-        payload.data = body;
-    }
-    try{
-        const {status, data } = await axios(payload);
-        return {status, data};
-    }catch({response}){
-        const {status, data } = response;
-        return {status, data };
-    }
-}
 
 const router = express.Router();
 
@@ -78,6 +52,8 @@ router.get('/create/seeds', controller.createSeeds);
 router.get('/news/add', controller.add);
 
 router.get('/users', controller.user);
+
+router.get('/users/delete=:id', controller.deleteUser);
 
 router.post('/create/crops', middleware.postCreateCrops, controller.postCrops);
 

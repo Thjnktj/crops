@@ -34,6 +34,13 @@ block content
                 label Nội dung
                 .form-group.d-flex            
                     textarea#editor.form-control(name="content", cols="30", rows="10") Soạn thảo nội dung vào đây
+                    script(src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js")
+                    script.
+                        ClassicEditor
+                            .create( document.querySelector( '#editor' ) )
+                            .catch( error => {
+                                console.error( error );
+                            } );
                    
                 label Tag
                 .form-group.d-flex

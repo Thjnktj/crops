@@ -61,6 +61,7 @@ module.exports.index = function (req, res, next) {
         listTypes: listTypes().listTypes,
         listSize: listTypes().listSize,
         listNum: listCount().list,
+        images: 'lua.jpg',
         i: 0
     });
 }
@@ -74,6 +75,7 @@ module.exports.loadId = function (req, res, next) {
         title: 'Crops Page - Website about the Crops',
         list: res.locals.list,
         page: res.locals.page || 1,
+        images: req.images,
         crops: db.get('crops').cloneDeep().value(),
         types: db.get('types').cloneDeep().value(),
         seeds: seeds,
@@ -98,7 +100,9 @@ module.exports.detail = function(req, res, next){
         session: req.signedCookies.userId,
         comments: db.get('comments').filter({seed: seed.id}).takeRight(5).value(),
         user: db.get('users').find({id: req.signedCookies.userId}).value(),
-        style: 'background-image: url(/upload/' + seed.images + ');'
+        style: 'background-image: url(/upload/' + seed.images + ');',
+        images: 'background-image: url(/images/' + req.images[0] + ');',
+        images1: req.images[0]
     });
 }
 

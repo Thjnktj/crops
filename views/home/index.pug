@@ -10,27 +10,27 @@ block content
                                 .category-wrap-2.ftco-animate.img.align-self-stretch.d-flex(style='background-image: url(images/category.jpg);')
                                     .text.text-center
                                         h2 Crops Dictionary
-                                            p Website chia sẻ giống cây trồng
+                                            p Website chia sẻ giống cây trồng nông nghiệp
                                             p
                                             a.btn.btn-primary(href='/crops') Tìm hiểu
                             .col-md-6
                                 .category-wrap.ftco-animate.img.mb-4.d-flex.align-items-end(style='background-image: url(images/lua.jpg);')
                                     .text.px-3.py-1
                                         h2.mb-0
-                                            a(href='#') Lúa
+                                            a(href='/crops/load=KpvL9a4xn') Lúa
                                 .category-wrap.ftco-animate.img.d-flex.align-items-end(style='background-image: url(images/ngo-2.jpg);')
                                     .text.px-3.py-1
                                         h2.mb-0
-                                            a(href='#') Ngô
+                                            a(href='/crops/load=N0YRx_qf-') Ngô
                     .col-md-4
                         .category-wrap.ftco-animate.img.mb-4.d-flex.align-items-end(style='background-image: url(images/khoai.jpg);')
                             .text.px-3.py-1
                                 h2.mb-0
-                                    a(href='#') Khoai
+                                    a(href='/crops/load=YDmRLgWCb') Khoai
                         .category-wrap.ftco-animate.img.d-flex.align-items-end(style='background-image: url(images/san.jpg);')
                             .text.px-3.py-1
                                 h2.mb-0
-                                    a(href='#') Sắn
+                                    a(href='/crops/load=z1f7-2DRW') Sắn
 
     section.ftco-section.ftco-no-pb.ftco-no-pt
         .container
@@ -44,13 +44,13 @@ block content
                             .product
                                 if(item.images === '')
                                     a.img-prod(href='/crops/id='+item.id)
-                                        img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                                        img.img-fluids(src='/images/lua.jpg', alt='Colorlib Template')
                                         if(item.new === true)
                                             span.status New
                                         .overlay
                                 else
                                     a.img-prod(href='/crops/id='+item.id)
-                                        img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                        img.img-fluids(src='/upload/'+ item.images, alt='Colorlib Template')
                                         if(item.new === true)
                                             span.status New
                                         .overlay
@@ -81,13 +81,13 @@ block content
                         .product
                             if(item.images === '')
                                 a.img-prod(href='/crops/id='+item.id)
-                                    img.img-fluid(src='/images/ngo-1.jpg', alt='Colorlib Template')
+                                    img.img-fluids(src='/images/ngo-1.jpg', alt='Colorlib Template')
                                     if(item.new === true)
                                         span.status New
                                     .overlay
                             else
                                 a.img-prod(href='/crops/id='+item.id)
-                                    img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                    img.img-fluids(src='/upload/'+ item.images, alt='Colorlib Template')
                                     if(item.new === true)
                                         span.status New
                                     .overlay
@@ -119,13 +119,13 @@ block content
                         .product
                             if(item.images === '')
                                 a.img-prod(href='/crops/id='+item.id)
-                                    img.img-fluid(src='/images/khoai-tay.jpg', alt='Colorlib Template')
+                                    img.img-fluids(src='/images/khoai-tay.jpg', alt='Colorlib Template')
                                     if(item.new === true)
                                         span.status New
                                     .overlay
                             else
                                 a.img-prod(href='/crops/id='+item.id)
-                                    img.img-fluid(src='/upload/'+ item.images, alt='Colorlib Template')
+                                    img.img-fluids(src='/upload/'+ item.images, alt='Colorlib Template')
                                     if(item.new === true)
                                         span.status New
                                     .overlay

@@ -16,8 +16,6 @@ block content
                         .col-sm-9.col-md-10
                             i.fas.fa-table.mr-1
                             span Người dùng
-                        .col-sm-3.col-md-2
-                            a.btn.btn-primary(href="/admin/create/crops") Quản lý comment
                 .card-body
                     .table-responsive
                         table#dataTable.table.table-bordered(width='100%', cellspacing='0')
@@ -38,5 +36,4 @@ block content
                                         td
                                         td
                                         td
-                                            a(href="/admin/views/update="+user.id).btn.btn-success Sửa
-                                            a(href="/admin/views/delete="+user.id).btn.btn-danger Xóa
+                                            a(href="/admin/users/delete="+user.id).btn.btn-danger Xóa

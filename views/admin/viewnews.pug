@@ -34,7 +34,6 @@ block content
                                     th Miêu tả
                                     th Ngày đăng
                                     th Tag
-                                    th Trạng thái
                                     th Tác vụ
                             tbody
                                 each item in news
@@ -44,11 +43,5 @@ block content
                                         td= item.date
                                         td= item.tag
                                         td
-                                            if(item.status === true)
-                                                a.btn.btn-primary(href="#") Duyệt
-                                            else
-                                                a.btn.btn-primary(href="#") Chờ
-                                        td
-                                            a(href="/admin/views/update=").btn.btn-success Sửa
-                                            a(href="/admin/news/delete=" + item.id).btn.btn-danger Xóa
+                                            a(href=`/admin/news/delete=${item.id}`).btn.btn-danger Xóa
                                                 

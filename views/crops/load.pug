@@ -6,7 +6,7 @@ block load
                 .product
                     if(item.images === '')
                         a.img-prod(href='/crops/id='+item.id)
-                            img.img-fluid(src='/images/lua.jpg', alt='Colorlib Template')
+                            img.img-fluid(src=`/images/${images}`, alt='Colorlib Template')
                             if(item.new === true)
                                 span.status New
                             .overlay

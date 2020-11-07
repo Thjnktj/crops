@@ -226,3 +226,8 @@ module.exports.user = function(req, res, next){
         users: db.get('users').value()
     });
 }
+
+module.exports.deleteUser = function (req, res, next) {
+    db.get('users').remove({ id: req.params.id }).write();
+    res.redirect('/admin/users')
+}

@@ -5,9 +5,10 @@ block shows
         span.ml-3
             i.fa.fa-user
                 span.ml-1=load.poster
-    h2= load.name
-    h4
+    h4= load.name
+    h5
         i= load.description
-    img(src="/upload/"+ load.images, alt="No Images", style='margin-left: 20%')
-    div#detail(style="text-align: justify;")= load.content
-    b= load.tag
+    div#detail(style="text-align: justify;")!= load.content
+    h5
+        span Tag: 
+        span= load.tag

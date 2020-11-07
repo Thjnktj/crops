@@ -2,7 +2,7 @@ extends ../layouts/index
 block content
 
     if(seed.images === '')
-        .hero-wrap.hero-bread(style="background-image: url('/images/lua.png');")
+        .hero-wrap.hero-bread(style= images)
             .container
                 .row.no-gutters.slider-text.align-items-center.justify-content-center
                     .col-md-9.ftco-animate.text-center
@@ -33,8 +33,8 @@ block content
             .row
                 if(seed.images === '')
                     .col-lg-6.mb-5.ftco-animate
-                        a.image-popup(href='/images/lua.png')
-                            img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                        a.image-popup(href= `/images/${images1}`)
+                            img.img-fluid(src= `/images/${images1}`, alt='Colorlib Template')
                 else
                     .col-lg-6.mb-5.ftco-animate
                         a.image-popup(href='/upload/'+seed.images)
@@ -110,7 +110,7 @@ block content
                     .col-md-6.col-lg-3.ftco-animate
                         .product
                             a.img-prod(href='#')
-                                img.img-fluid(src='/images/lua.png', alt='Colorlib Template')
+                                img.img-fluid(src=`/images/${images1}`, alt='Colorlib Template')
                                 span.status New
                                 .overlay
                             .text.py-3.pb-4.px-3.text-center

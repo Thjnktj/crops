@@ -34,20 +34,17 @@ app.use('/search', searchRouter);
 app.use('/admin',middleware.authLogin, adminRouter);
 app.use('/auth', authRouter);
 
-app.use((req, res, next) => {
-    next(createError(404));
-});
+// app.use((req, res, next) => {
+//     next(createError(404));
+// });
 
-app.use((err, req, res, next) => {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use((err, req, res, next) => {
+//     res.locals.message = err.message;
+//     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    //render the error
-    res.status(err.status || 500);
-    res.render('error');
-});
+//     //render the error
+//     res.status(err.status || 500);
+//     res.render('error');
+// });
 
-
-app.listen(PORT,() => {
-    console.log(`This website running on port ${PORT}`);
-})
+app.listen(PORT)

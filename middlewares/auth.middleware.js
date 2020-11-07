@@ -6,7 +6,6 @@ module.exports = {
             res.redirect('/auth/login');
             return;
         }
-
         next();
     },
     authRegister: function(req, res, next){
@@ -17,8 +16,7 @@ module.exports = {
                 message: ['Tài khoản đã tồn tại']
             });
             return;
-        }
-        
+        }      
         next();
     }
 }

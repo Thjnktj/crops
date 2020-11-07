@@ -10,8 +10,7 @@ block content
                     ul.categories
                         each item in types
                             li
-                                a(href='#')= item.name
-                                    span (0)
+                                a(href='/news')= item.name
                 .sidebar-box.ftco-animate
                     h3.heading Tin tức mới nhất
                     each items in news
